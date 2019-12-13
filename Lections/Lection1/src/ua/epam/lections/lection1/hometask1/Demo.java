@@ -26,9 +26,8 @@ public class Demo {
         System.out.println(output);
 
         System.out.println((703 / 26));*/
-        System.out.println(Part7.chars2digits("ZZ"));
-    }
-    public static char intToChar (int num){
-        return  (char) ((num + 'A') - 1);
+        System.out.println(Part7.chars2digits("aaa"));
+        System.out.println(Part7.digits2chars(703));
+        System.out.println(Part7.rightColumn("ZZ"));
     }
 }
