@@ -11,16 +11,26 @@ public class Demo {
             sum += (charToInt(strToChar[i]) * Math.pow(26, strToChar.length - i - 1));
         }
         System.out.println(sum);*/
-        int sum = 701;
-        for (int i = 0; sum > 0; i++){
-            sum /= 26;
-            System.out.println(( sum % 26));
-
+        //int sum = 701;
+        int num = 53;
+        String output = "";
+        while (num > 0){
+            if (num % 26 == 0){
+                output = intToChar((num % 26) + 26) + output;
+                num = (num / 26) - 1;
+            } else {
+                output = intToChar(num % 26) + output;
+                num /= 26;
+            }
         }
+        System.out.println(output);
 
         //System.out.println((703 / 26));
     }
     public static int charToInt (char c){
         return (c - 'A') + 1;
+    }
+    public static char intToChar (int num){
+        return  (char) ((num + 'A') - 1);
     }
 }
