@@ -36,19 +36,19 @@ public class Circle {
 
     public boolean isPointBelongTo(int x, int y) {
 
-        return distToPoint(x, y) <= Math.pow(this.radius, 2) ? true : false;
+        return distToPoint(x, y) <= this.radius ? true : false;
     }
 
     public boolean isCircleBelongTo(Circle circle) {
         if (isPointBelongTo(circle.getX(), circle.getY())) {
-            double maxRadius = this.radius - Math.sqrt(distToPoint(circle.getX(), circle.getY()));
+            double maxRadius = this.radius - distToPoint(circle.getX(), circle.getY());
             return circle.radius <= maxRadius ? true : false;
         }
         return false;
     }
 
     private double distToPoint(int x, int y) {
-        return (Math.pow(x - this.x, 2) + Math.pow(y - this.y, 2));
+        return Math.sqrt(Math.pow(x - this.x, 2) + Math.pow(y - this.y, 2));
     }
 
     @Override
