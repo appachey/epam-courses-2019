@@ -42,13 +42,21 @@ public class Matrix {
             double[][] matrVolumes = matrix.getMatrix();
             for (int i = 0; i < this.ROWS; i++) {
                 for (int j = 0; j < this.COLS; j++){
-                    this.matrix[i][j] = this.matrix[i][j] + matrVolumes[i][j];
+                    this.matrix[i][j] += matrVolumes[i][j];
                 }
             }
         } else {
             System.out.println("Different dimmentions of matrix");
         }
 
+    }
+
+    public void mulMatrByValue(int value){
+        for (int i = 0; i < this.ROWS; i++) {
+            for (int j = 0; j < this.COLS; j++) {
+                this.matrix[i][j] *= value;
+            }
+        }
     }
 
     public void printMatr() {
