@@ -41,18 +41,18 @@ public class Matrix {
         }
     }
 
-    public static Matrix addMatrix(Matrix mat1, Matrix mat2) {
-        double[][] matrix1 = mat1.getMatrix();
-        double[][] matrix2 = mat2.getMatrix();
-        double[][] result = new double[mat1.getRows()][mat1.getCols()];
-        Matrix resultMatr = new Matrix(mat1.getRows(), mat1.getCols());
-        for (int i = 0; i < mat1.getRows(); i++) {
-            for (int j = 0; j < mat1.getCols(); j++){
-                result[i][j] = matrix1[i][j] + matrix2[i][j];
+    public void addMatrix(Matrix matrix) {
+        if (isEqual(matrix)){
+            double[][] matrVolumes = matrix.getMatrix();
+            for (int i = 0; i < this.ROWS; i++) {
+                for (int j = 0; j < this.COLS; j++){
+                    this.matrix[i][j] = this.matrix[i][j] + matrVolumes[i][j];
+                }
             }
+        } else {
+            System.out.println("Different dimmentions of matrix");
         }
-        resultMatr.setMatrix(result);
-        return resultMatr;
+
     }
 
     public void printMatr() {
@@ -71,8 +71,8 @@ public class Matrix {
         return bd.doubleValue();
     }
 
-    private static boolean isEqual (Matrix mat1, Matrix mat2) {
-        if (mat1.getRows() == mat2.getRows() && mat1.getCols() == mat2.getCols()) {
+    private boolean isEqual (Matrix matrix) {
+        if (this.ROWS == matrix.getRows() && this.COLS == matrix.getCols()) {
             return true;
         }
         return false;
