@@ -21,10 +21,6 @@ public class Matrix {
         return this.matrix;
     }
 
-    public void setMatrix(double[][] matrix) {
-        this.matrix = matrix;
-    }
-
     public Matrix(int rows, int cols) {
         this.ROWS = rows;
         this.COLS = cols;
