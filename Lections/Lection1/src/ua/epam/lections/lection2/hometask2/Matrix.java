@@ -21,14 +21,17 @@ public class Matrix {
         return this.matrix;
     }
 
+    private void setMatrix(double[][] matrix) {
+        this.matrix = matrix;
+    }
+
     public Matrix(int rows, int cols) {
         this.rows = rows;
         this.cols = cols;
         this.matrix = new double[this.rows][this.cols];
-        this.initMatr();
     }
 
-    private void initMatr() {
+    public void initRandom() {
         Random rand = new Random();
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.cols; j++) {
@@ -59,7 +62,8 @@ public class Matrix {
         }
     }
 
-    public void mulMatrix(Matrix matrix) {
+    public Matrix mulMatrix(Matrix matrix) {
+        Matrix resultMatrix = new Matrix(this.rows, matrix.getCols());
         double[][] result = new double[this.rows][matrix.getCols()];
         if (this.cols == matrix.getRows()) {
             double[][] matrVolumes = matrix.getMatrix();
@@ -74,11 +78,21 @@ public class Matrix {
             }
         } else {
             System.out.println("Count of columns of first matrix is not equal count of rows of second matrix");
+            System.exit(0);
         }
-        this.matrix = result;
-        this.rows = this.matrix.length;
-        this.cols = this.matrix[0].length;
+        resultMatrix.setMatrix(result);
+        return resultMatrix;
+    }
 
+    public Matrix transpondMatr() {
+        Matrix result = new Matrix (this.cols, this.rows);
+        double[][] resArr = result.getMatrix();
+        for (int i = 0; i < result.getRows(); i++) {
+            for (int j = 0; j < result.getCols(); j++) {
+                resArr[i][j] = this.matrix[j][i];
+            }
+        }
+        return result;
     }
 
     public void printMatr() {
