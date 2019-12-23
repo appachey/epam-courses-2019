@@ -5,16 +5,16 @@ import java.math.RoundingMode;
 import java.util.Random;
 
 public class Matrix {
-    private double [][] matrix;
-    private final int ROWS;
-    private final int COLS;
+    private double[][] matrix;
+    private int rows;
+    private int cols;
 
     public int getRows() {
-        return ROWS;
+        return rows;
     }
 
     public int getCols() {
-        return COLS;
+        return cols;
     }
 
     public double[][] getMatrix() {
@@ -22,26 +22,26 @@ public class Matrix {
     }
 
     public Matrix(int rows, int cols) {
-        this.ROWS = rows;
-        this.COLS = cols;
-        this.matrix = new double[this.ROWS][this.COLS];
+        this.rows = rows;
+        this.cols = cols;
+        this.matrix = new double[this.rows][this.cols];
         this.initMatr();
     }
 
     private void initMatr() {
         Random rand = new Random();
-        for (int i = 0; i < this.ROWS; i++) {
-            for (int j = 0; j < this.COLS; j++) {
+        for (int i = 0; i < this.rows; i++) {
+            for (int j = 0; j < this.cols; j++) {
                 this.matrix[i][j] = valGenerator();
             }
         }
     }
 
     public void addMatrix(Matrix matrix) {
-        if (isEqual(matrix)){
+        if (isEqual(matrix)) {
             double[][] matrVolumes = matrix.getMatrix();
-            for (int i = 0; i < this.ROWS; i++) {
-                for (int j = 0; j < this.COLS; j++){
+            for (int i = 0; i < this.rows; i++) {
+                for (int j = 0; j < this.cols; j++) {
                     this.matrix[i][j] += matrVolumes[i][j];
                 }
             }
@@ -51,18 +51,40 @@ public class Matrix {
 
     }
 
-    public void mulMatrByValue(int value){
-        for (int i = 0; i < this.ROWS; i++) {
-            for (int j = 0; j < this.COLS; j++) {
+    public void mulMatrByValue(int value) {
+        for (int i = 0; i < this.rows; i++) {
+            for (int j = 0; j < this.cols; j++) {
                 this.matrix[i][j] *= value;
             }
         }
     }
 
+    public void mulMatrix(Matrix matrix) {
+        double[][] result = new double[this.rows][matrix.getCols()];
+        if (this.cols == matrix.getRows()) {
+            double[][] matrVolumes = matrix.getMatrix();
+            int matRows = matrix.getRows();
+            int matCols = matrix.getCols();
+            for (int i = 0; i < this.rows; i++) {
+                for (int j = 0; j < matCols; j++) {
+                    for (int k = 0; k < matRows; k++) {
+                        result[i][j] += this.matrix[i][k] * matrVolumes[k][j];
+                    }
+                }
+            }
+        } else {
+            System.out.println("Count of columns of first matrix is not equal count of rows of second matrix");
+        }
+        this.matrix = result;
+        this.rows = this.matrix.length;
+        this.cols = this.matrix[0].length;
+
+    }
+
     public void printMatr() {
-        for (int i = 0; i < this.ROWS; i++) {
-            for (int j = 0; j < this.COLS; j++){
-                System.out.printf("%7.2f", this.matrix[i][j]);
+        for (int i = 0; i < this.rows; i++) {
+            for (int j = 0; j < this.cols; j++) {
+                System.out.printf("%10.2f", this.matrix[i][j]);
             }
             System.out.println();
         }
@@ -75,8 +97,8 @@ public class Matrix {
         return bd.doubleValue();
     }
 
-    private boolean isEqual (Matrix matrix) {
-        if (this.ROWS == matrix.getRows() && this.COLS == matrix.getCols()) {
+    private boolean isEqual(Matrix matrix) {
+        if (this.rows == matrix.getRows() && this.cols == matrix.getCols()) {
             return true;
         }
         return false;
