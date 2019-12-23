@@ -27,5 +27,32 @@ public class Vector {
         this.capacity = 0;
     }
 
+    public void printVector() {
+        for (int i = 0; i < this.capacity; i++) {
+            System.out.println(this.refs[i]);
+        }
+    }
 
+    public Object getElem (int position) {
+        if (position <= this.capacity) {
+            return this.refs[position];
+        }
+        return null;
+    }
+
+    public boolean deleteElem(int i) {
+        if (i <= this.capacity) {
+            if (i == this.capacity) {
+                this.refs[i] = null;
+                this.capacity--;
+            } else {
+                for (int j = i; j < this.capacity; j++) {
+                    this.refs[j] = this.refs[j + 1];
+                }
+                this.refs[this.capacity] = null;
+                this.capacity--;
+            }
+        }
+        return false;
+    }
 }
