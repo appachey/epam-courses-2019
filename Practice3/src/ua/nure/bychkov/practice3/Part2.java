@@ -6,16 +6,41 @@ import java.util.regex.Pattern;
 public class Part2 {
     private static final String F_NAME = "part2.txt";
     public static void main(String[] args) {
-        String input = Util.readFile("part2_1.txt");
-        convert(input);
+        String input = Util.readFile(F_NAME);
+        System.out.println(convert(input));
     }
 
-    public static void convert(String input) {
+    public static String convert(String input) {
         String regex = "(?m)(^|\\W+?\\b+?)(\\S+?)(\\b+?)";
         Pattern p = Pattern.compile(regex);
         Matcher match = p.matcher(input);
+        StringBuilder minStr = new StringBuilder();
+        StringBuilder maxStr = new StringBuilder();
+        int min = input.length();
+        int max = 0;
         while (match.find()) {
-            System.out.println(match.group(2));
+            if (match.group(2).length() < min) {
+                min = match.group(2).length();
+                if (minStr.length() == 0) {
+                    minStr.append(match.group(2));
+                } else {
+                    minStr.replace(0, minStr.length(), match.group(2));
+                }
+            } else if (match.group(2).length() == min){
+                minStr.append(", ").append(match.group(2));
+            }
+
+            if (match.group(2).length() > max) {
+                max = match.group(2).length();
+                if (maxStr.length() == 0) {
+                    maxStr.append(match.group(2));
+                } else {
+                    maxStr.replace(0, maxStr.length(), match.group(2));
+                }
+            } else if (match.group(2).length() == max) {
+                maxStr.append(", ").append(match.group(2));
+            }
         }
+        return maxStr.toString();
     }
 }
