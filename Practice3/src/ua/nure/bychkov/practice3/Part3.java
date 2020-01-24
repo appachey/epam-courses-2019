@@ -4,10 +4,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Part3 {
-    private static final String F_NAME = "part2.txt";
+    private static final String F_NAME = "part3.txt";
     public static void main(String[] args) {
         String input = Util.readFile(F_NAME);
         System.out.println(convert(input));
+        System.out.println("~~~~~~~~~~~");
     }
 
     public static String convert(String input) {

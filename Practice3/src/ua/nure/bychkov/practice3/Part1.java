@@ -10,10 +10,11 @@ public class Part1 {
 
     public static void main(String[] args) {
         String input = Util.readFile(FNAME);
-        //System.out.println(convert1(input));
-        //System.out.println(convert2(input));
-        //System.out.println(convert3(input));
+        System.out.println(convert1(input));
+        System.out.println(convert2(input));
+        System.out.println(convert3(input));
         System.out.println(convert4(input));
+        System.out.println("~~~~~~~~~~~~~~~");
     }
 
     public static String convert1(String input) {
