@@ -11,7 +11,8 @@ public class Part2 {
     }
 
     public static String convert(String input) {
-        String regex = "(?m)(^|\\W+?\\b+?)(\\S+?)(\\b+?)";
+        String regex = "(?Um)\\b(\\w+?)\\b";
+        String regex2 = "(?Um)\\b(\\w+?)\\b(?=.+\\b\\1\\b)";
         Pattern p = Pattern.compile(regex);
         Matcher match = p.matcher(input);
         StringBuilder minStr = new StringBuilder();
@@ -19,28 +20,33 @@ public class Part2 {
         int min = input.length();
         int max = 0;
         while (match.find()) {
-            if (match.group(2).length() < min) {
-                min = match.group(2).length();
+            //System.out.println(match.group(1));
+            if (match.group(1).length() < min) {
+                min = match.group(1).length();
                 if (minStr.length() == 0) {
-                    minStr.append(match.group(2));
+                    minStr.append(match.group(1));
                 } else {
-                    minStr.replace(0, minStr.length(), match.group(2));
+                    minStr.replace(0, minStr.length(), match.group(1));
                 }
-            } else if (match.group(2).length() == min){
-                minStr.append(", ").append(match.group(2));
+            } else if (match.group(1).length() == min){
+                minStr.append(", ").append(match.group(1));
             }
 
-            if (match.group(2).length() > max) {
-                max = match.group(2).length();
+            if (match.group(1).length() > max) {
+                max = match.group(1).length();
                 if (maxStr.length() == 0) {
-                    maxStr.append(match.group(2));
+                    maxStr.append(match.group(1));
                 } else {
-                    maxStr.replace(0, maxStr.length(), match.group(2));
+                    maxStr.replace(0, maxStr.length(), match.group(1));
                 }
-            } else if (match.group(2).length() == max) {
-                maxStr.append(", ").append(match.group(2));
+            } else if (match.group(1).length() == max) {
+                maxStr.append(", ").append(match.group(1));
             }
         }
-        return maxStr.toString();
+        String result = maxStr.reverse().toString();
+        result = result.replaceAll(regex2, "");
+        result = new StringBuilder(result).reverse().toString();
+
+        return result;
     }
 }
