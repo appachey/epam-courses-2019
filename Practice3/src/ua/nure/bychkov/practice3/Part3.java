@@ -8,7 +8,7 @@ public class Part3 {
     public static void main(String[] args) {
         String input = Util.readFile(F_NAME);
         System.out.println(convert(input));
-        System.out.println("~~~~~~~~~~~");
+        System.out.println("~~~~~~~~~~~~~~~");
     }
 
     public static String convert(String input) {
