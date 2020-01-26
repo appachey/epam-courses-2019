@@ -1,13 +1,16 @@
 package ua.nure.bychkov.practice3;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Part2 {
     private static final String F_NAME = "part2.txt";
     public static void main(String[] args) {
         String input = Util.readFile(F_NAME);
         System.out.println(convert(input));
+        System.out.println("~~~~~~~~~~~~~~~");
     }
 
     public static String convert(String input) {
@@ -27,7 +30,7 @@ public class Part2 {
                     minStr.replace(0, minStr.length(), match.group(1));
                 }
             } else if (match.group(1).length() == min){
-                minStr.append(", ").append(match.group(1));
+                minStr.append(" ").append(match.group(1));
             }
 
             if (match.group(1).length() > max) {
@@ -38,9 +41,19 @@ public class Part2 {
                     maxStr.replace(0, maxStr.length(), match.group(1));
                 }
             } else if (match.group(1).length() == max) {
-                maxStr.append(", ").append(match.group(1));
+                maxStr.append(" ").append(match.group(1));
             }
         }
-        return maxStr.toString();
+        StringBuilder result = new StringBuilder();
+        result.append("Min: ")
+                .append(Arrays.stream(minStr.toString().split("\\s+"))
+                        .distinct()
+                        .collect(Collectors.joining(", ")))
+                .append(System.lineSeparator())
+                .append("Max: ")
+                .append(Arrays.stream(maxStr.toString().split("\\s+"))
+                        .distinct()
+                        .collect(Collectors.joining(", ")));
+        return result.toString();
     }
 }
