@@ -11,6 +11,7 @@ public class Demo {
         } catch (NoSuchAlgorithmException ex) {
             ex.printStackTrace();
         }
-
+        Part5.main(new String[]{});
+        Part6.main(new String[]{});
     }
 }

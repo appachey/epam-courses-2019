@@ -12,6 +12,7 @@ public class Part5 {
 
         }
         System.out.println(sb.toString());
+        System.out.println("~~~~~~~~~~~~~~~");
     }
 
     public static String decimal2Roman(int x) {

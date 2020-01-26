@@ -13,7 +13,7 @@ public class Part3 {
 
     public static String convert(String input) {
         StringBuilder sb = new StringBuilder(input);
-        String regex = "(?Um)\\b(\\w+?)\\b";
+        String regex = "(?Um)\\b(\\w{3,})\\b";
         Pattern p = Pattern.compile(regex);
         Matcher match = p.matcher(sb);
 

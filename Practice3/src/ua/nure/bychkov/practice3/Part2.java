@@ -12,7 +12,6 @@ public class Part2 {
 
     public static String convert(String input) {
         String regex = "(?Um)\\b(\\w+?)\\b";
-        String regex2 = "(?Um)\\b(\\w+?)\\b(?=.+\\b\\1\\b)";
         Pattern p = Pattern.compile(regex);
         Matcher match = p.matcher(input);
         StringBuilder minStr = new StringBuilder();
@@ -20,7 +19,6 @@ public class Part2 {
         int min = input.length();
         int max = 0;
         while (match.find()) {
-            //System.out.println(match.group(1));
             if (match.group(1).length() < min) {
                 min = match.group(1).length();
                 if (minStr.length() == 0) {
@@ -43,10 +41,6 @@ public class Part2 {
                 maxStr.append(", ").append(match.group(1));
             }
         }
-        String result = maxStr.reverse().toString();
-        result = result.replaceAll(regex2, "");
-        result = new StringBuilder(result).reverse().toString();
-
-        return result;
+        return maxStr.toString();
     }
 }
