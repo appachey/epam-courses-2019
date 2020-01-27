@@ -14,7 +14,7 @@ public class Part2 {
     }
 
     public static String convert(String input) {
-        String regex = "(?Um)\\b(\\w+?)\\b";
+        String regex = "(?Um)\\b(\\p{Alpha}+)\\b";
         Pattern p = Pattern.compile(regex);
         Matcher match = p.matcher(input);
         StringBuilder minStr = new StringBuilder();

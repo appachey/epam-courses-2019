@@ -1,6 +1,6 @@
 package ua.nure.bychkov.practice3;
 
-import java.util.Random;
+import java.security.SecureRandom;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -85,10 +85,10 @@ public class Part1 {
     }
 
     private static String passGenerator() {
-        Random rand = new Random();
+        SecureRandom sRand = new SecureRandom();
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 4; i++){
-            sb.append(0 + rand.nextInt(10));
+            sb.append(0 + sRand.nextInt(10));
         }
         return sb.toString();
     }

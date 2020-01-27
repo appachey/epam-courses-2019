@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b255bf61-f567-4132-ad1e-4a5754f44d59" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practice3/ua/nure/bychkov/practice3/Demo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practice3/ua/nure/bychkov/practice3/Demo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Demo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Part1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Part1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Part2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Part2.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,9 +45,22 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
-  <component name="RunManager" selected="Application.Demo">
+  <component name="RunManager" selected="Application.Part2">
     <configuration name="Demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ua.nure.bychkov.practice3.Demo" />
+      <module name="Practice3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ua.nure.bychkov.practice3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Part1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ua.nure.bychkov.practice3.Part1" />
       <module name="Practice3" />
       <extension name="coverage">
         <pattern>
@@ -85,19 +98,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Part5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ua.nure.bychkov.practice3.Part5" />
-      <module name="Practice3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ua.nure.bychkov.practice3.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Part6" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ua.nure.bychkov.practice3.Part6" />
       <module name="Practice3" />
@@ -113,11 +113,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Demo" />
         <item itemvalue="Application.Part2" />
+        <item itemvalue="Application.Part1" />
+        <item itemvalue="Application.Demo" />
         <item itemvalue="Application.Part6" />
         <item itemvalue="Application.Part3" />
-        <item itemvalue="Application.Part5" />
       </list>
     </recent_temporary>
   </component>
@@ -236,25 +236,25 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1580034435624" />
-    <state width="1807" height="278" key="GridCell.Tab.0.bottom" timestamp="1580076149665">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1877" height="325" key="GridCell.Tab.0.bottom" timestamp="1580113935275">
+      <screen x="0" y="0" width="1920" height="1170" />
     </state>
-    <state width="938" height="325" key="GridCell.Tab.0.bottom/0.0.1920.1170@0.0.1920.1170" timestamp="1579876385749" />
+    <state width="1877" height="325" key="GridCell.Tab.0.bottom/0.0.1920.1170@0.0.1920.1170" timestamp="1580113935275" />
     <state width="1807" height="278" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1580076149665" />
-    <state width="1807" height="278" key="GridCell.Tab.0.center" timestamp="1580076149663">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1877" height="325" key="GridCell.Tab.0.center" timestamp="1580113935274">
+      <screen x="0" y="0" width="1920" height="1170" />
     </state>
-    <state width="938" height="325" key="GridCell.Tab.0.center/0.0.1920.1170@0.0.1920.1170" timestamp="1579876385749" />
+    <state width="1877" height="325" key="GridCell.Tab.0.center/0.0.1920.1170@0.0.1920.1170" timestamp="1580113935274" />
     <state width="1807" height="278" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1580076149663" />
-    <state width="1807" height="278" key="GridCell.Tab.0.left" timestamp="1580076149662">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1877" height="325" key="GridCell.Tab.0.left" timestamp="1580113935274">
+      <screen x="0" y="0" width="1920" height="1170" />
     </state>
-    <state width="938" height="325" key="GridCell.Tab.0.left/0.0.1920.1170@0.0.1920.1170" timestamp="1579876385748" />
+    <state width="1877" height="325" key="GridCell.Tab.0.left/0.0.1920.1170@0.0.1920.1170" timestamp="1580113935274" />
     <state width="1807" height="278" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1580076149662" />
-    <state width="1807" height="278" key="GridCell.Tab.0.right" timestamp="1580076149664">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state width="1877" height="325" key="GridCell.Tab.0.right" timestamp="1580113935275">
+      <screen x="0" y="0" width="1920" height="1170" />
     </state>
-    <state width="938" height="325" key="GridCell.Tab.0.right/0.0.1920.1170@0.0.1920.1170" timestamp="1579876385749" />
+    <state width="1877" height="325" key="GridCell.Tab.0.right/0.0.1920.1170@0.0.1920.1170" timestamp="1580113935275" />
     <state width="1807" height="278" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1580076149664" />
     <state width="1807" height="344" key="GridCell.Tab.1.bottom" timestamp="1580071495322">
       <screen x="67" y="27" width="1853" height="1053" />
