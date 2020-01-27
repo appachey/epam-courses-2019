@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b255bf61-f567-4132-ad1e-4a5754f44d59" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="b255bf61-f567-4132-ad1e-4a5754f44d59" name="Default Changelist" comment="JTV-350&#10;Done.">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Practice3/ua/nure/bychkov/practice3/Part1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practice3/ua/nure/bychkov/practice3/Part1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Practice3/ua/nure/bychkov/practice3/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practice3/ua/nure/bychkov/practice3/Util.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Part1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Part1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Part2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Part2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Part4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Part4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Part5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Part5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Util.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +28,7 @@
     <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1WLiCvqupXZKrLol5jcPPwdoHiI" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -45,7 +49,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
-  <component name="RunManager" selected="Application.Part2">
+  <component name="RunManager" selected="Application.Part1">
     <configuration name="Demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ua.nure.bychkov.practice3.Demo" />
       <module name="Practice3" />
@@ -85,8 +89,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Part3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ua.nure.bychkov.practice3.Part3" />
+    <configuration name="Part5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ua.nure.bychkov.practice3.Part5" />
       <module name="Practice3" />
       <extension name="coverage">
         <pattern>
@@ -113,11 +117,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Part2" />
         <item itemvalue="Application.Part1" />
+        <item itemvalue="Application.Part5" />
+        <item itemvalue="Application.Part2" />
         <item itemvalue="Application.Demo" />
         <item itemvalue="Application.Part6" />
-        <item itemvalue="Application.Part3" />
       </list>
     </recent_temporary>
   </component>
@@ -133,8 +137,9 @@
       </list>
     </option>
   </component>
-  <component name="SvnConfiguration">
-    <configuration />
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>C:\Users\Voen\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -153,6 +158,8 @@
       <workItem from="1579951806710" duration="6326000" />
       <workItem from="1580033755837" duration="4249000" />
       <workItem from="1580039045611" duration="16764000" />
+      <workItem from="1580130670170" duration="1854000" />
+      <workItem from="1580141338094" duration="351000" />
     </task>
     <task id="LOCAL-00001" summary="add Practice 3">
       <created>1579703190763</created>
@@ -210,13 +217,65 @@
       <option name="project" value="LOCAL" />
       <updated>1580069420845</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="resolve some issues">
+      <created>1580114121353</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1580114121353</updated>
+    </task>
+    <task id="LOCAL-00010" summary="JTV-350&#10;Done.">
+      <created>1580114419632</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1580114419632</updated>
+    </task>
+    <task id="LOCAL-00011" summary="JTV-350&#10;Done.">
+      <created>1580116484528</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1580116484528</updated>
+    </task>
+    <task id="LOCAL-00012" summary="JTV-350&#10;Done.">
+      <created>1580119517236</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1580119517236</updated>
+    </task>
+    <task id="LOCAL-00013" summary="JTV-350&#10;Done.">
+      <created>1580119621362</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1580119621362</updated>
+    </task>
+    <task id="LOCAL-00014" summary="JTV-350&#10;Done.">
+      <created>1580122121838</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1580122121838</updated>
+    </task>
+    <task id="LOCAL-00015" summary="JTV-350&#10;Done.">
+      <created>1580123345296</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1580123345296</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
     <MESSAGE value="add Practice 3" />
     <MESSAGE value="part 2" />
     <MESSAGE value="add part 3" />
@@ -224,37 +283,40 @@
     <MESSAGE value="add Part5 tasks" />
     <MESSAGE value="add Part6" />
     <MESSAGE value="implements convert for Part6" />
-    <option name="LAST_COMMIT_MESSAGE" value="implements convert for Part6" />
+    <MESSAGE value="resolve some issues" />
+    <MESSAGE value="JTV-350&#10;Done." />
+    <option name="LAST_COMMIT_MESSAGE" value="JTV-350&#10;Done." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="524" y="154" width="881" height="807" key="CommitChangelistDialog2" timestamp="1580069418477">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="590" y="183" width="881" height="807" key="CommitChangelistDialog2" timestamp="1580141675689">
+      <screen x="0" y="0" width="1920" height="1170" />
     </state>
-    <state x="590" y="183" key="CommitChangelistDialog2/0.0.1920.1170@0.0.1920.1170" timestamp="1579865965194" />
+    <state x="590" y="183" key="CommitChangelistDialog2/0.0.1920.1170@0.0.1920.1170" timestamp="1580141675689" />
     <state x="524" y="154" width="881" height="807" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1580069418477" />
-    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1580034435624">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="735" y="314" width="424" height="484" key="FileChooserDialogImpl" timestamp="1580141530961">
+      <screen x="0" y="0" width="1920" height="1170" />
     </state>
+    <state x="735" y="314" key="FileChooserDialogImpl/0.0.1920.1170@0.0.1920.1170" timestamp="1580141530961" />
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1580034435624" />
-    <state width="1877" height="325" key="GridCell.Tab.0.bottom" timestamp="1580113935275">
+    <state width="1877" height="325" key="GridCell.Tab.0.bottom" timestamp="1580134228538">
       <screen x="0" y="0" width="1920" height="1170" />
     </state>
-    <state width="1877" height="325" key="GridCell.Tab.0.bottom/0.0.1920.1170@0.0.1920.1170" timestamp="1580113935275" />
+    <state width="1877" height="325" key="GridCell.Tab.0.bottom/0.0.1920.1170@0.0.1920.1170" timestamp="1580134228538" />
     <state width="1807" height="278" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1580076149665" />
-    <state width="1877" height="325" key="GridCell.Tab.0.center" timestamp="1580113935274">
+    <state width="1877" height="325" key="GridCell.Tab.0.center" timestamp="1580134228538">
       <screen x="0" y="0" width="1920" height="1170" />
     </state>
-    <state width="1877" height="325" key="GridCell.Tab.0.center/0.0.1920.1170@0.0.1920.1170" timestamp="1580113935274" />
+    <state width="1877" height="325" key="GridCell.Tab.0.center/0.0.1920.1170@0.0.1920.1170" timestamp="1580134228538" />
     <state width="1807" height="278" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1580076149663" />
-    <state width="1877" height="325" key="GridCell.Tab.0.left" timestamp="1580113935274">
+    <state width="1877" height="325" key="GridCell.Tab.0.left" timestamp="1580134228537">
       <screen x="0" y="0" width="1920" height="1170" />
     </state>
-    <state width="1877" height="325" key="GridCell.Tab.0.left/0.0.1920.1170@0.0.1920.1170" timestamp="1580113935274" />
+    <state width="1877" height="325" key="GridCell.Tab.0.left/0.0.1920.1170@0.0.1920.1170" timestamp="1580134228537" />
     <state width="1807" height="278" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1580076149662" />
-    <state width="1877" height="325" key="GridCell.Tab.0.right" timestamp="1580113935275">
+    <state width="1877" height="325" key="GridCell.Tab.0.right" timestamp="1580134228538">
       <screen x="0" y="0" width="1920" height="1170" />
     </state>
-    <state width="1877" height="325" key="GridCell.Tab.0.right/0.0.1920.1170@0.0.1920.1170" timestamp="1580113935275" />
+    <state width="1877" height="325" key="GridCell.Tab.0.right/0.0.1920.1170@0.0.1920.1170" timestamp="1580134228538" />
     <state width="1807" height="278" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1580076149664" />
     <state width="1807" height="344" key="GridCell.Tab.1.bottom" timestamp="1580071495322">
       <screen x="67" y="27" width="1853" height="1053" />
@@ -276,14 +338,14 @@
     </state>
     <state width="1877" height="400" key="GridCell.Tab.1.right/0.0.1920.1170@0.0.1920.1170" timestamp="1579875192641" />
     <state width="1807" height="344" key="GridCell.Tab.1.right/67.27.1853.1053@67.27.1853.1053" timestamp="1580071495322" />
-    <state x="463" y="230" key="SettingsEditor" timestamp="1579703784316">
+    <state x="463" y="230" key="SettingsEditor" timestamp="1580141689325">
       <screen x="0" y="0" width="1920" height="1170" />
     </state>
-    <state x="463" y="230" key="SettingsEditor/0.0.1920.1170@0.0.1920.1170" timestamp="1579703784316" />
-    <state x="600" y="315" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1580069426119">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="463" y="230" key="SettingsEditor/0.0.1920.1170@0.0.1920.1170" timestamp="1580141689325" />
+    <state x="552" y="320" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1580141486086">
+      <screen x="0" y="0" width="1920" height="1170" />
     </state>
-    <state x="552" y="320" key="Vcs.Push.Dialog.v2/0.0.1920.1170@0.0.1920.1170" timestamp="1579865970682" />
+    <state x="552" y="320" key="Vcs.Push.Dialog.v2/0.0.1920.1170@0.0.1920.1170" timestamp="1580141486086" />
     <state x="600" y="315" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1580069426119" />
     <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1580033762772">
       <screen x="67" y="27" width="1853" height="1053" />
@@ -293,5 +355,13 @@
       <screen x="0" y="0" width="1920" height="1170" />
     </state>
     <state x="771" y="503" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1170@0.0.1920.1170" timestamp="1579703801227" />
+    <state x="767" y="279" width="419" height="611" key="svn.repositoryBrowser" timestamp="1580114325856">
+      <screen x="0" y="0" width="1920" height="1170" />
+    </state>
+    <state x="767" y="279" width="419" height="611" key="svn.repositoryBrowser/0.0.1920.1170@0.0.1920.1170" timestamp="1580114325856" />
+    <state x="783" y="495" key="svn.upgradeDialog" timestamp="1580114328806">
+      <screen x="0" y="0" width="1920" height="1170" />
+    </state>
+    <state x="783" y="495" key="svn.upgradeDialog/0.0.1920.1170@0.0.1920.1170" timestamp="1580114328806" />
   </component>
 </project>

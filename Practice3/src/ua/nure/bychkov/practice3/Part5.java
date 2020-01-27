@@ -1,13 +1,28 @@
 package ua.nure.bychkov.practice3;
 
 public class Part5 {
+    public static final int ROM_C = 100;
+    public static final int ROM_XC = 90;
+    public static final int ROM_L = 50;
+    public static final int ROM_XL = 40;
     public static void main(String[] args) {
+        final String delim = " --> ";
+        final int x = 101;
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i < 101; i++) {
-            if (i == 100) {
-                sb.append(i).append(" --> ").append(decimal2Roman(i)).append(" --> ").append(roman2Decimal(decimal2Roman(i)));
+        for (int i = 1; i < x; i++) {
+            if (i == x - 1) {
+                sb.append(i)
+                        .append(delim)
+                        .append(decimal2Roman(i))
+                        .append(delim)
+                        .append(roman2Decimal(decimal2Roman(i)));
             } else {
-                sb.append(i).append(" --> ").append(decimal2Roman(i)).append(" --> ").append(roman2Decimal(decimal2Roman(i))).append(System.lineSeparator());
+                sb.append(i)
+                        .append(delim)
+                        .append(decimal2Roman(i))
+                        .append(delim)
+                        .append(roman2Decimal(decimal2Roman(i)))
+                        .append(System.lineSeparator());
             }
 
         }
@@ -16,28 +31,28 @@ public class Part5 {
     }
 
     public static String decimal2Roman(int x) {
-        if (x < 1 || x > 100) {
+        if (x < 1 || x > ROM_C) {
             throw new IllegalArgumentException();
         }
         StringBuilder result = new StringBuilder();
-        while (x == 100) {
+        while (x == ROM_C) {
             result.append("C");
-            x -= 100;
+            x -= ROM_C;
         }
 
-        while (x >= 90) {
+        while (x >= ROM_XC) {
             result.append("XC");
-            x -= 90;
+            x -= ROM_XC;
         }
 
-        while (x >= 50) {
+        while (x >= ROM_L) {
             result.append("L");
-            x -= 50;
+            x -= ROM_L;
         }
 
-        while (x >= 40) {
+        while (x >= ROM_XL) {
             result.append("XL");
-            x -= 40;
+            x -= ROM_XL;
         }
 
         while (x >= 10) {
@@ -80,10 +95,10 @@ public class Part5 {
                 num = 10;
                 break;
             case 'L':
-                num = 50;
+                num = ROM_L;
                 break;
             case 'C':
-                num = 100;
+                num = ROM_C;
                 break;
             default:
                 num = 0;
