@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b255bf61-f567-4132-ad1e-4a5754f44d59" name="Default Changelist" comment="JTV-350&#10;Done.">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="b255bf61-f567-4132-ad1e-4a5754f44d59" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practice3/ua/nure/bychkov/practice3/Part1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practice3/ua/nure/bychkov/practice3/Part1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Practice3/ua/nure/bychkov/practice3/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Practice3/ua/nure/bychkov/practice3/Util.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Part1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Part1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Part4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Part4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Part5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Part5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ua/nure/bychkov/practice3/Util.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +152,8 @@
       <workItem from="1580033755837" duration="4249000" />
       <workItem from="1580039045611" duration="16764000" />
       <workItem from="1580130670170" duration="1854000" />
-      <workItem from="1580141338094" duration="351000" />
+      <workItem from="1580141338094" duration="669000" />
+      <workItem from="1580199456760" duration="43000" />
     </task>
     <task id="LOCAL-00001" summary="add Practice 3">
       <created>1579703190763</created>
@@ -266,7 +260,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580123345296</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="solve issues">
+      <created>1580141734977</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1580141734977</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,13 +286,14 @@
     <MESSAGE value="implements convert for Part6" />
     <MESSAGE value="resolve some issues" />
     <MESSAGE value="JTV-350&#10;Done." />
-    <option name="LAST_COMMIT_MESSAGE" value="JTV-350&#10;Done." />
+    <MESSAGE value="solve issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="solve issues" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="590" y="183" width="881" height="807" key="CommitChangelistDialog2" timestamp="1580141675689">
+    <state x="590" y="183" width="881" height="807" key="CommitChangelistDialog2" timestamp="1580141733217">
       <screen x="0" y="0" width="1920" height="1170" />
     </state>
-    <state x="590" y="183" key="CommitChangelistDialog2/0.0.1920.1170@0.0.1920.1170" timestamp="1580141675689" />
+    <state x="590" y="183" key="CommitChangelistDialog2/0.0.1920.1170@0.0.1920.1170" timestamp="1580141733217" />
     <state x="524" y="154" width="881" height="807" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1580069418477" />
     <state x="735" y="314" width="424" height="484" key="FileChooserDialogImpl" timestamp="1580141530961">
       <screen x="0" y="0" width="1920" height="1170" />
@@ -342,10 +344,10 @@
       <screen x="0" y="0" width="1920" height="1170" />
     </state>
     <state x="463" y="230" key="SettingsEditor/0.0.1920.1170@0.0.1920.1170" timestamp="1580141689325" />
-    <state x="552" y="320" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1580141486086">
+    <state x="552" y="320" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1580141739846">
       <screen x="0" y="0" width="1920" height="1170" />
     </state>
-    <state x="552" y="320" key="Vcs.Push.Dialog.v2/0.0.1920.1170@0.0.1920.1170" timestamp="1580141486086" />
+    <state x="552" y="320" key="Vcs.Push.Dialog.v2/0.0.1920.1170@0.0.1920.1170" timestamp="1580141739846" />
     <state x="600" y="315" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1580069426119" />
     <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1580033762772">
       <screen x="67" y="27" width="1853" height="1053" />
