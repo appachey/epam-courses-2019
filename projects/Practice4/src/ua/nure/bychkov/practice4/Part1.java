@@ -8,7 +8,7 @@ public class Part1 {
     private static final String F_NAME = "part1.txt";
 
     public static void main(String[] args) {
-        String input = ReadFile.rFile(F_NAME, ENCODING);
+        String input = ReadUtil.readFile(F_NAME, ENCODING);
         System.out.println(invert(input));
     }
 
