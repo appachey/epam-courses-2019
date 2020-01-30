@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b255bf61-f567-4132-ad1e-4a5754f44d59" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../projects/Practice4/part3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projects/Practice4/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../projects/Practice4/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../projects/Practice4/src/ua/nure/bychkov/practice4/Part3.java" beforeDir="false" afterPath="$PROJECT_DIR$/../projects/Practice4/src/ua/nure/bychkov/practice4/Part3.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,6 +159,7 @@
       <workItem from="1580202504867" duration="589000" />
       <workItem from="1580205130597" duration="1826000" />
       <workItem from="1580224821397" duration="233000" />
+      <workItem from="1580392464899" duration="196000" />
     </task>
     <task id="LOCAL-00001" summary="add Practice 3">
       <created>1579703190763</created>
