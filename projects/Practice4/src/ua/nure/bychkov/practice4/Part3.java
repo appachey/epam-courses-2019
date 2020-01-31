@@ -15,7 +15,7 @@ public class Part3 {
         Matcher charMatch = Pattern.compile("(?Um)\\b(\\p{Alpha})\\b").matcher(input);
         Matcher strMatch = Pattern.compile("(?Um)\\b(\\p{Alpha}{2,}+)\\b").matcher(input);
         Matcher intMatch = Pattern.compile("(?Um)(?<=\\s|^)(\\d+)(?=\\s|$)").matcher(input);
-        Matcher doubleMatch = Pattern.compile("(?Um)(\\.\\d+|\\d+\\.\\d+)\\b").matcher(input);
+        Matcher doubleMatch = Pattern.compile("(?Um)(\\.\\d+|\\d+\\.\\d+|\\d+\\.)").matcher(input);
         String consoleInput = "";
         while (!"stop".equals(consoleInput)) {
             consoleInput = scan.nextLine();
