@@ -2,17 +2,17 @@ package ua.nure.bychkov.practice4;
 
 import java.util.Iterator;
 
-public class Part4 {
+public class Part4 implements Iterable<String>{
     public static void main(String[] args) {
 
     }
 
-    public Iterator<String> iterator(){
+    @Override
+    public Iterator<String> iterator() {
         return new IteratorImpl();
     }
 
     private class IteratorImpl implements Iterator<String> {
-
         @Override
         public boolean hasNext() {
             return false;
@@ -29,3 +29,4 @@ public class Part4 {
         }
     }
 }
+
