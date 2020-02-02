@@ -11,7 +11,7 @@ public class Part4 implements Iterable<String>{
     private Matcher match;
 
     public Part4(String fileName, String encoding) {
-        text = ReadUtil.readFile(fileName, encoding);
+        text = ReadUtil.readFile(fileName, encoding).trim();
         textLength = text.length();
         match = Pattern.compile("(?Us)\\S.+?[\\.\\?!]+").matcher(text);
     }
@@ -19,6 +19,7 @@ public class Part4 implements Iterable<String>{
     public static void main(String[] args) {
         Part4 part4 = new Part4("part4.txt", "cp1251");
         Iterator it = part4.iterator();
+        System.out.println(it.next());
         System.out.println(it.next());
         System.out.println(it.next());
         System.out.println(it.next());
