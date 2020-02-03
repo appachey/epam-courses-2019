@@ -5,8 +5,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Part3 {
+    private static final String F_NAME = "part3.txt";
+    private static final String ENCODING = "cp1251";
     public static void main(String[] args) {
-        parser("part3.txt", "cp1251");
+        parser(F_NAME, ENCODING);
     }
 
     private static String finder(String base, String input) {

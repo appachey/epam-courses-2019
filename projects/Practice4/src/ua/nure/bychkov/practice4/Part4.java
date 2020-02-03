@@ -24,7 +24,6 @@ public class Part4 implements Iterable<String>{
         System.out.println(it.next());
         System.out.println(it.next());
         System.out.println(it.next());
-        System.out.println(it.next());
     }
 
     @Override
