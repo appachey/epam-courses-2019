@@ -21,14 +21,14 @@ public class Part5 {
                 try {
                     System.out.println(rb.getString(properties[0]));
                 } catch (MissingResourceException ex) {
-                    System.out.println("No such value");
+                    System.out.println("No such values");
                 }
             } else {
                 ResourceBundle rb = ResourceBundle.getBundle(RES, new Locale(properties[1]));
                 try {
                     System.out.println(rb.getString(properties[0]));
                 } catch (MissingResourceException ex) {
-                    System.out.println("No such value");
+                    System.out.println("No such values");
                 }
             }
         }

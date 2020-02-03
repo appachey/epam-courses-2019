@@ -38,8 +38,12 @@ public class Part6 {
     public static void finder(String fName, String encoding) {
         Scanner scan = new Scanner(System.in);
         String input = ReadUtil.readFile(fName, encoding);
-        String consoleInput;
-        while (!"stop".equals(consoleInput = scan.nextLine())) {
+        String consoleInput = "";
+        while (true) {
+            consoleInput = scan.nextLine();
+            if ("stop".equals(consoleInput) || "Stop".equals(consoleInput)) {
+                break;
+            }
             System.out.println(find(consoleInput, input));
         }
     }

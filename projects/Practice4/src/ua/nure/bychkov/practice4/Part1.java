@@ -30,7 +30,7 @@ public class Part1 {
                 }
             }
         }
-        String output = sb.toString().replaceAll("\n|\n\r", System.lineSeparator());
-        return output;
+
+        return sb.toString().replaceAll("\n|\n\r", System.lineSeparator());
     }
 }

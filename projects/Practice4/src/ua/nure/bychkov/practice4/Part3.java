@@ -13,16 +13,21 @@ public class Part3 {
 
     private static String finder(String base, String input) {
         Matcher match;
-        if ("char".equals(base)) {
-            match = Pattern.compile("(?Um)\\b(\\p{Alpha})\\b").matcher(input);
-        } else if("String".equals(base)) {
-            match = Pattern.compile("(?Um)\\b(\\p{Alpha}{2,}+)\\b").matcher(input);
-        } else if("int".equals(base)) {
-            match = Pattern.compile("(?Um)(?<=\\s|^)(\\d+)(?=\\s|$)").matcher(input);
-        } else if("double".equals(base)) {
-            match = Pattern.compile("(?Um)(\\.\\d+|\\d+\\.\\d+|\\d+\\.)").matcher(input);
-        } else {
-            return "Incorrect input";
+        switch (base) {
+            case ("char"):
+                match = Pattern.compile("(?Um)\\b(\\p{Alpha})\\b").matcher(input);
+                break;
+            case ("String"):
+                match = Pattern.compile("(?Um)\\b(\\p{Alpha}{2,}+)\\b").matcher(input);
+                break;
+            case ("int"):
+                match = Pattern.compile("(?Um)(?<=\\s|^)(\\d+)(?=\\s|$)").matcher(input);
+                break;
+            case ("double"):
+                match = Pattern.compile("(?Um)(\\.\\d+|\\d+\\.\\d+|\\d+\\.)").matcher(input);
+                break;
+            default:
+                return "Incorrect input";
         }
         StringBuilder output = new StringBuilder();
         if (!match.find()) {

@@ -27,7 +27,7 @@ public class Part2 {
     }
 
     private static int[] sortData(int[] data) {
-        int[] result = data;
+        int[] result = data.clone();
         for (int i = result.length - 1; i > 0; i--){
             for(int j = 0 ; j < i ; j++){
                 if( result[j] > result[j+1] ){

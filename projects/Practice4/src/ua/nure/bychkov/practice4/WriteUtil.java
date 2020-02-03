@@ -15,10 +15,9 @@ public class WriteUtil {
     }
 
     public static void writeFile(String fName, String data, String encoding) {
-        try {
-            BufferedWriter bWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fName, false), encoding));
+        try (BufferedWriter bWriter = new BufferedWriter(
+                new OutputStreamWriter(new FileOutputStream(fName, false), encoding))) {
             bWriter.write(data);
-            bWriter.close();
         } catch (IOException ex) {
             ex.printStackTrace();
         }

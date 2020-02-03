@@ -16,13 +16,12 @@ public class ReadUtil {
     }
     public static String readFile(String fName, String encoding) {
         StringBuilder output = new StringBuilder();
-        try {
-            BufferedReader bReader = new BufferedReader(new InputStreamReader(new FileInputStream(fName), encoding));
+        try (BufferedReader bReader = new BufferedReader(
+                new InputStreamReader(new FileInputStream(fName), encoding))) {
             String str;
             while ((str = bReader.readLine()) != null) {
                 output.append(str).append(L_SEP);
             }
-            bReader.close();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
