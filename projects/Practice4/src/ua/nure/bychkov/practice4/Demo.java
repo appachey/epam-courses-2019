@@ -32,12 +32,12 @@ public class Demo {
         // restore the standard input
         System.setIn(STD_IN);
 
-//        System.out.println("=========================== PART6");
-//        // set the mock input
-//        System.setIn(new ByteArrayInputStream(
-//                "Latn^Cyrl^asdf^latn^cyrl^stop".replace("^", System.lineSeparator()).getBytes()));
-//        Part6.main(args);
-//        // restore the standard input
-//        System.setIn(STD_IN);
+        System.out.println("=========================== PART6");
+        // set the mock input
+        System.setIn(new ByteArrayInputStream(
+                "Latn^Cyrl^asdf^latn^cyrl^stop".replace("^", System.lineSeparator()).getBytes()));
+        Part6.main(args);
+        // restore the standard input
+        System.setIn(STD_IN);
     }
 }
