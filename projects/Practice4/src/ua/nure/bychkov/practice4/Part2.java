@@ -16,7 +16,7 @@ public class Part2 {
         System.out.println(consoleOutput());
     }
 
-    public static int[] fillArray(int count) {
+    private static int[] fillArray(int count) {
         SecureRandom rand = new SecureRandom();
         int[] result = new int[count];
         for (int i = 0; i < count; i++) {
@@ -43,13 +43,10 @@ public class Part2 {
     private static String joinArray(int[] data) {
         StringBuilder dataToString = new StringBuilder();
         for(int i = 0; i < data.length; i++) {
-            if (i == data.length - 1) {
-                dataToString.append(data[i]);
-            } else {
-                dataToString.append(data[i]).append(" ");
-            }
+
+            dataToString.append(data[i]).append(" ");
         }
-        return dataToString.toString();
+        return dataToString.toString().trim();
     }
 
     public static void writeRandomData(String fName, String encoding) {

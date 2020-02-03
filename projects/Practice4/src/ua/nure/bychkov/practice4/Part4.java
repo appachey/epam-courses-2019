@@ -6,6 +6,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Part4 implements Iterable<String>{
+    private static final String F_NAME = "part4.txt";
+    private static final String ENCODING = "cp1251";
     private String text;
     private int textLength;
     private Matcher match;
@@ -17,13 +19,11 @@ public class Part4 implements Iterable<String>{
     }
 
     public static void main(String[] args) {
-        Part4 part4 = new Part4("part4.txt", "cp1251");
+        Part4 part4 = new Part4(F_NAME, ENCODING);
         Iterator it = part4.iterator();
-        System.out.println(it.next());
-        System.out.println(it.next());
-        System.out.println(it.next());
-        System.out.println(it.next());
-        System.out.println(it.next());
+        while (it.hasNext()) {
+            System.out.println(it.next());
+        }
     }
 
     @Override

@@ -1,7 +1,9 @@
 package ua.nure.bychkov.practice4;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 public class WriteUtil {
     public static final String F_NAME = "part2.txt";
