@@ -5,8 +5,7 @@ public class Part3 {
     private int counter2;
     private int count;
     private int ms;
-    private Object lock;
-
+    private final Object lock;
     private Thread[] threads;
 
     public Part3(int n, int k, int t) {
@@ -18,26 +17,31 @@ public class Part3 {
         lock = new Object();
     }
 
+    public static void main(String[] args) throws InterruptedException {
+        Part3 p = new Part3(3, 5, 100);
+        p.test();
+        p.reset();
+        p.testSync();
+    }
+
     public void reset() {
         counter = 0;
         counter2 = 0;
     }
     public void test() throws InterruptedException {
         for (int i = 0; i < threads.length; i++) {
-            threads[i] = new Thread(){
-                public void run() {
-                    for (int i = 0; i < count; i++) {
-                        System.out.printf("%s %s%n", counter, counter2);
-                        counter++;
-                        try {
-                            Thread.sleep(ms);
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
-                        }
-                        counter2++;
+            threads[i] = new Thread(() -> {
+                for (int j = 0; j < count; j++) {
+                    System.out.printf("%s %s%n", counter, counter2);
+                    counter++;
+                    try {
+                        Thread.sleep(ms);
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
                     }
+                    counter2++;
                 }
-            };
+            });
         }
         for (Thread t : threads) {
             t.start();
@@ -49,9 +53,8 @@ public class Part3 {
 
     public void testSync() throws InterruptedException {
         for (int i = 0; i < threads.length; i++) {
-            threads[i] = new Thread(){
-                public void run() {
-                    for (int i = 0; i < count; i++) {
+            threads[i] = new Thread(() -> {
+                    for (int j = 0; j < count; j++) {
                         synchronized (lock) {
                             System.out.printf("%s %s%n", counter, counter2);
                             counter++;
@@ -64,7 +67,7 @@ public class Part3 {
                         }
                     }
                 }
-            };
+            );
         }
         for (Thread t : threads) {
             t.start();
@@ -72,12 +75,5 @@ public class Part3 {
         for (Thread t : threads) {
             t.join();
         }
-    }
-
-    public static void main(String[] args) throws InterruptedException {
-        Part3 p = new Part3(3, 5, 100);
-        p.test();
-        p.reset();
-        p.testSync();
     }
 }

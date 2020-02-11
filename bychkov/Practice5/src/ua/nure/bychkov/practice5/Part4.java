@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Part4 {
-    private static final Object lock = new Object();
     private static int result = 0;
+
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, InterruptedException {
 //        SecureRandom rand = new SecureRandom();
 //        StringBuilder sb = new StringBuilder();
@@ -50,7 +50,7 @@ public class Part4 {
         int result = 0;
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                result = matrix[i][j] > result ? matrix[i][j] : result;
+                result = Math.max(matrix[i][j], result);
                 Thread.sleep(1);
             }
         }
@@ -82,7 +82,7 @@ public class Part4 {
 
         public void run() {
             for (int j = 0; j < matrixRow.length; j++) {
-                result = matrixRow[j] > result ? matrixRow[j] : result;
+                result = Math.max(matrixRow[j], result);
                 try {
                     Thread.sleep(1);
                 } catch (InterruptedException e) {
