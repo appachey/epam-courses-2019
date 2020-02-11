@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Formatter;
+import java.util.List;
 import java.util.Scanner;
 
 public class Part4 {
@@ -27,12 +29,17 @@ public class Part4 {
 //        }
 //        f.flush();
         Scanner scan = new Scanner(new File("part4.txt"), "cp1251");
-        int[][] matrix = new int[4][100];
-        while (scan.hasNextInt()) {
-            for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 100; j++) {
-                    matrix[i][j] = scan.nextInt();
-                }
+        List<String> lines = new ArrayList<>();
+        while (scan.hasNextLine()) {
+            lines.add(scan.nextLine());
+        }
+        int cols = lines.get(0).split("\\s+").length;
+        int rows = lines.size();
+        int[][] matrix = new int[rows][cols];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                String[] str = lines.get(i).split("\\s+");
+                matrix[i][j] = Integer.parseInt(str[j]);
             }
         }
         maxVol(matrix);
