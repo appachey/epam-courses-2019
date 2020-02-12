@@ -1,6 +1,5 @@
 package ua.nure.bychkov.practice5;
 
-import java.io.IOException;
 import java.io.InputStream;
 
 public class MyInputStream extends InputStream {
@@ -14,7 +13,7 @@ public class MyInputStream extends InputStream {
         length = arr.length;
     }
     @Override
-    public int read() throws IOException {
+    public int read() {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException ex) {

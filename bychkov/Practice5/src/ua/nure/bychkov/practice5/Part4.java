@@ -2,32 +2,14 @@ package ua.nure.bychkov.practice5;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.UnsupportedEncodingException;
-import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Formatter;
 import java.util.List;
 import java.util.Scanner;
 
 public class Part4 {
     private static int result = 0;
 
-    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, InterruptedException {
-//        SecureRandom rand = new SecureRandom();
-//        StringBuilder sb = new StringBuilder();
-//        Formatter f = new Formatter("part4.txt", "cp1251");
-//        for (int i = 0; i < 4; i++) {
-//            for (int j = 0; j < 100; j++) {
-//                int x = rand.nextInt(1000);
-//                if (j == 99) {
-//                    f.format("%d", x);
-//                }else {
-//                    f.format("%-4d", x);
-//                }
-//            }
-//            f.format("%s", System.lineSeparator());
-//        }
-//        f.flush();
+    public static void main(String[] args) throws FileNotFoundException, InterruptedException {
         Scanner scan = new Scanner(new File("part4.txt"), "cp1251");
         List<String> lines = new ArrayList<>();
         while (scan.hasNextLine()) {
