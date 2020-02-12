@@ -1,8 +1,6 @@
 package ua.nure.bychkov.practice5;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 
 public class Demo {
     public static void main(String[] args) throws InterruptedException, IOException {
@@ -16,5 +14,7 @@ public class Demo {
         Part4.main(new String[]{});
         System.out.println("=========================== PART5");
         Part5.main(new String[]{});
+        System.out.println("=========================== PART6");
+        Part6.main(new String[]{});
     }
 }

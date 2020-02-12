@@ -8,9 +8,7 @@ public class Part2 {
     public static void main(String[] args) throws InterruptedException {
         InputStream inStream = new MyInputStream(System.lineSeparator().getBytes());
         System.setIn(inStream);
-        Thread t = new Thread(){
-            public void run() {Spam.main(null);}
-        };
+        Thread t = new Thread(() -> {Spam.main(null);});
         t.start();
         t.join();
         System.setIn(STD_IN);

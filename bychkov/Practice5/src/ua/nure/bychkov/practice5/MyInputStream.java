@@ -16,7 +16,7 @@ public class MyInputStream extends InputStream {
     @Override
     public int read() throws IOException {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
