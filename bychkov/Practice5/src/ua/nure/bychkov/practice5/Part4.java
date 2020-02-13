@@ -63,8 +63,12 @@ public class Part4 {
         }
 
         public void run() {
-            for (int j = 0; j < matrixRow.length; j++) {
-                result = Math.max(matrixRow[j], result);
+            findMax();
+        }
+
+        synchronized public void findMax() {
+            for (int i : matrixRow) {
+                result = Math.max(i, result);
                 try {
                     Thread.sleep(1);
                 } catch (InterruptedException e) {
