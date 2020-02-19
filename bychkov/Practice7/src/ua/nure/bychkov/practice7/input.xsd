@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://nure.ua/p7">
+    <xsd:element name="medicines">
+        <xsd:element name="medicine" type="MedicineElem" maxOccurs="unbounded"/>
+    </xsd:element>
+    
+    <xsd:complexType name="MedicineElem">
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" />
+            <xsd:element name="pharm" type="xsd:string" />
+            <xsd:element name="analog" type="xsd:string" maxOccurs="unbounded"/>
+            <xsd:element name="version" type="VersionElem" maxOccurs="10"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="VersionElem">
+        <xsd:sequence>
+            <xsd:element name="type" type="xsd:string"/>
+            <xsd:element name="manufacturer" type="ManufacturerElem" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ManufacturerElem">
+        <xsd:sequence>
+            <xsd:element name="certificate">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="number" type="xsd:unsignedInt"/>
+                        <xsd:element name="expiredate" type="xsd:date"/>
+                        <xsd:element name="organization" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="package">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="type" type="xsd:string"/>
+                        <xsd:element name="count" type="CountType" />
+                        <xsd:element name="price" type="PriceType" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="TTT">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="price" type="xsd:string">
+                    <xs
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:simpleType name="CountType">
+        <xsd:restriction base="xsd:unsignedInt">
+            <xsd:minInclusive value="1"/>
+            <xsd:maxInclusive value="300"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="PriceType">
+        <xsd:restriction base="xsd:double">
+            <xsd:minInclusive value="0.01"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>
