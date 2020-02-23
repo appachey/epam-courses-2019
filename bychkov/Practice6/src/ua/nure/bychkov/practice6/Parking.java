@@ -1,27 +1,10 @@
 package ua.nure.bychkov.practice6;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Parking {
     public boolean[] places;
 
     public Parking(int placesCount) {
         places = new boolean[placesCount];
-    }
-    public static void main(String[] args) {
-        Parking parking = new Parking(6);
-        parking.print();
-        System.out.println("~~~~~~~~~");
-        parking.arrive(3);
-        parking.arrive(3);
-        parking.arrive(5);
-        parking.arrive(3);
-        parking.arrive(3);
-        parking.arrive(3);
-        System.out.println(parking.arrive(3));
-        parking.depart(5);
-        parking.print();
     }
 
     public boolean arrive (int k) {
