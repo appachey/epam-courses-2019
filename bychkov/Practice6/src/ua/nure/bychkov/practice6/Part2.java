@@ -1,4 +1,4 @@
-package ua.nure.bycgkov.practice6;
+package ua.nure.bychkov.practice6;
 
 import java.util.ArrayList;
 import java.util.Iterator;
