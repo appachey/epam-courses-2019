@@ -27,9 +27,11 @@ public class Range implements Iterable<Integer>{
     }
 
     public void print() {
+        StringBuilder output = new StringBuilder();
         for (int i : range) {
-            System.out.printf("%d ", i);
+            output.append(i).append(" ");
         }
+        System.out.println(output.toString().trim());
     }
 
     public Iterator<Integer> iterator() {
