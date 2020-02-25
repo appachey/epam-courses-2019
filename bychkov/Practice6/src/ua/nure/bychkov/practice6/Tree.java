@@ -2,12 +2,6 @@ package ua.nure.bychkov.practice6;
 
 public class Tree <E extends Comparable<E>> {
     private Node<E> root = null;
-    // добавляет элемент в контейнер
-    // если в контейнере есть элемент равный по compareTo добавляемому,
-    // то добавления не происходит и метод возвращает false
-    // в противном случае элемент попадает в контейнер и метод возвращает true
-    // первый добавляемый элемент становится корнем дерева
-    // автобалансировки в дереве нет
 
     public boolean add(E element) {
         Node<E> node = new Node<>();
@@ -38,7 +32,6 @@ public class Tree <E extends Comparable<E>> {
        }
     }
 
-    // добавляет все элементы из массива в контейнер (вызов в цикле метода add, см. выше)
     public void add(E[] elements) {
         for (E element : elements) {
             add(element);
@@ -62,10 +55,6 @@ public class Tree <E extends Comparable<E>> {
         return minNode;
     }
 
-    // удаляет элемент из контейнера
-    // если удаляемого элемента в контейнере нет, то возвращает false
-    // в противном случае удаляет элемент и возвращает true
-    // ВАЖНО! при удалении элемента дерево не должно потерять свойства бинарного дерева поиска
     public boolean remove(E element) {
         Node<E> current = root;
         Node<E> parent = root;
@@ -129,10 +118,27 @@ public class Tree <E extends Comparable<E>> {
         return true;
     }
 
-    // распечатывает дерево, так чтобы было видно его древовидную структуру, см. ниже пример
-    public void print() {}
+    private void print(Node<E> node, int offset) {
+        String template = "";
+        if (offset == 0) {
+            template = "%d\n";
+            offset += 2;
+        } else {
+            offset += 2;
+            template = "%" + offset + "d\n";
+        }
+        if(node != null){
+            print(node.leftBranch, offset);
+            System.out.printf(template, node.element);
+            print(node.rightBranch, offset);
+        }
+    }
 
-    // вложенный класс, объекты этого класса составляют дерево
+
+    public void print() {
+        print(root, 0);
+    }
+
     private static class Node<E> {
         private Node<E> leftBranch;
         private Node<E> rightBranch;

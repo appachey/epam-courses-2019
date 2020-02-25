@@ -12,5 +12,7 @@ public class Demo {
         Part3.main(new String[]{});
         System.out.println("=========================== PART4");
         Part4.main(new String[]{});
+        System.out.println("=========================== PART5");
+        Part5.main(new String[]{});
     }
 }
