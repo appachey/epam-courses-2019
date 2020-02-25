@@ -5,5 +5,6 @@ public class Part5 {
         Tree<Integer> tree = new Tree<>();
         Integer[] arr = {2,5,6,1,3,4,2};
         tree.add(arr);
+        System.out.println(tree.remove(2));
     }
 }
