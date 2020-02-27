@@ -1,39 +1,35 @@
 package ua.nure.bychkov.practice6;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Part62 {
-    private WordContainer words;
+    private List<String> words;
     private String text;
 
     public Part62 (String fName) {
         text = ReadUtil.readFile(fName);
-        words = new WordContainer();
+        words = new ArrayList<>();
     }
 
-    private List<Word> most3Len() {
+    private void most3Len() {
         String regex = "(?Umi)\\b(\\w+)\\b";
         Pattern p = Pattern.compile(regex);
         Matcher match = p.matcher(text);
         while (match.find()) {
-            words.add(new Word(match.group(1)));
+            words.add(match.group(1));
         }
-        List<Word> wList = words.getWordsList();
-        wList.sort((w1, w2) -> - w1.getContent().length() + w2.getContent().length());
-        return wList.subList(0, 3);
     }
 
     public void printWords() {
-        List<Word> output = most3Len();
-        for (Word w : output) {
-            System.out.println(w.getContent() + " ==> " + w.getContent().length());
-        }
-    }
+        most3Len();
+        words.stream().sorted((w1, w2) -> w2.length() - w1.length())
+                .limit(3)
+                .collect(Collectors.toList())
+                .forEach(w -> System.out.println(w + " ==> " + w.length()));
 
-    public static void main(String[] args) {
-        Part62 p62 = new Part62("part6.txt");
-        p62.printWords();
     }
 }

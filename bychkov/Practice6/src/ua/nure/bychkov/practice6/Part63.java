@@ -23,7 +23,9 @@ public class Part63 {
         while (match.find()) {
             words.add(match.group(1));
         }
-        return words.stream().filter(i -> Collections.frequency(words, i) > 1).distinct().limit(3)
+        return words.stream().filter(i -> Collections.frequency(words, i) > 1)
+                .distinct()
+                .limit(3)
                 .collect(Collectors.toList());
     }
 
