@@ -22,8 +22,7 @@ public class Part62 {
         }
         List<Word> wList = words.getWordsList();
         wList.sort((w1, w2) -> - w1.getContent().length() + w2.getContent().length());
-        List<Word> result = wList.subList(0, 3);
-        return result;
+        return wList.subList(0, 3);
     }
 
     public void printWords() {

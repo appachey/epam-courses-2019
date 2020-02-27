@@ -41,6 +41,10 @@ public class Part6 {
                 Part62 len = new Part62(fileName);
                 len.printWords();
                 break;
+            case ("duplicates") :
+                Part63 dup = new Part63(fileName);
+                dup.printWords();
+                break;
             default:
                 break;
         }

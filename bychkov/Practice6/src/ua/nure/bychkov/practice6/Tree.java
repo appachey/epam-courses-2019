@@ -103,7 +103,7 @@ public class Tree <E extends Comparable<E>> {
                 parent.rightBranch = current.rightBranch;
             }
         }
-        else if (current.rightBranch != null && current.leftBranch != null) {
+        else {
             Node<E> minNode = findMinNode(current);
             if (current == root) {
                 root = minNode;
@@ -119,7 +119,7 @@ public class Tree <E extends Comparable<E>> {
     }
 
     private void print(Node<E> node, int offset) {
-        String template = "";
+        String template;
         if (offset == 0) {
             template = "%d\n";
             offset += 2;
