@@ -1,5 +1,12 @@
 package ua.nure.bychkov.practice6;
 
+import ua.nure.bychkov.practice6.part1.Part1;
+import ua.nure.bychkov.practice6.part2.Part2;
+import ua.nure.bychkov.practice6.part3.Part3;
+import ua.nure.bychkov.practice6.part4.Part4;
+import ua.nure.bychkov.practice6.part5.Part5;
+import ua.nure.bychkov.practice6.part6.Part6;
+
 import java.io.IOException;
 
 public class Demo {
@@ -12,5 +19,11 @@ public class Demo {
         Part3.main(new String[]{});
         System.out.println("=========================== PART4");
         Part4.main(new String[]{});
+        System.out.println("=========================== PART5");
+        Part5.main(new String[]{});
+        System.out.println("=========================== PART6");
+        Part6.main(new String[] {"--input", "part6.txt", "--task", "frequency"});
+        Part6.main(new String[] {"--input", "part6.txt", "--task", "length"});
+        Part6.main(new String[] {"--input", "part6.txt", "--task", "duplicates"});
     }
 }
