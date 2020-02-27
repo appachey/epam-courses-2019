@@ -41,16 +41,12 @@ public class Word implements Comparable<Word>{
         return content + " : " + frequency;
     }
 
-//    @Override
-//    public int compareTo(Word w) {
-//        if (frequency - w.frequency == 0) {
-//            return content.compareTo(w.content);
-//        } else {
-//            return  - frequency + w.frequency;
-//        }
-//    }
     @Override
     public int compareTo(Word w) {
-            return  -frequency + w.frequency;
+        if (- frequency + w.frequency == 0) {
+            return content.compareTo(w.content);
+        } else {
+            return  - frequency + w.frequency;
+        }
     }
 }

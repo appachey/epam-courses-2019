@@ -1,6 +1,7 @@
 package ua.nure.bychkov.practice6;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class WordContainer {
@@ -18,6 +19,10 @@ public class WordContainer {
         } else {
             return words.add(w);
         }
+    }
+
+    public List<Word> getWordsList() {
+        return words;
     }
 
     public static void main(String[] args) {

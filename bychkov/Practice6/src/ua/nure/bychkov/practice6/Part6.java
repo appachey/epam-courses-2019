@@ -37,6 +37,10 @@ public class Part6 {
                 Part61 freq = new Part61(fileName);
                 freq.printWords();
                 break;
+            case ("length") :
+                Part62 len = new Part62(fileName);
+                len.printWords();
+                break;
             default:
                 break;
         }
