@@ -25,8 +25,12 @@ public class Word implements Comparable<Word>{
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null) {
+            return false;
+        }
         Word word = (Word) o;
         return Objects.equals(content, word.content);
     }
