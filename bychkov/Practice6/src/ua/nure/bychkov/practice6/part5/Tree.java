@@ -119,15 +119,12 @@ public class Tree <E extends Comparable<E>> {
     }
 
     private void print(Node<E> node, int offset) {
-        String template;
-        if (offset == 0) {
-            template = "%d\n";
-        } else {
+        String template = "%d\n";
+        if (node != root) {
             template = "%" + offset + "d\n";
         }
-        offset +=2;
         if(node != null){
-            print(node.leftBranch, offset);
+            print(node.leftBranch, offset += 2 + node.element.toString().length());
             System.out.printf(template, node.element);
             print(node.rightBranch, offset);
         }
@@ -135,7 +132,7 @@ public class Tree <E extends Comparable<E>> {
 
 
     public void print() {
-        print(root, 0);
+        print(root, root.element.toString().length());
     }
 
     private static class Node<E> {
