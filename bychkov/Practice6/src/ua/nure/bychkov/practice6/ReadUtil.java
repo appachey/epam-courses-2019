@@ -7,6 +7,10 @@ import java.nio.file.Paths;
 public class ReadUtil {
     private static final String ENCODING = "Cp1251";
 
+    private ReadUtil() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static String readFile(String path) {
         String res = null;
         try {
