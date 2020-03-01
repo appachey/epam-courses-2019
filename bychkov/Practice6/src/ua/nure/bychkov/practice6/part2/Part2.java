@@ -41,16 +41,20 @@ public class Part2 {
 
     public static long removeByIterator(List<Integer> list, int k) {
         long start = System.currentTimeMillis();
-        int deleteInd = k - 1;
+        int deleteInd = 0;
         while (list.size() != 1) {
             Iterator<Integer> it = list.iterator();
-            for (int i = 0; i < list.size() && list.size() != 1; i++) {
+            int i = 0;
+            while (i < list.size() && list.size() != 1) {
+                i++;
+                deleteInd++;
                 it.next();
-                if ( deleteInd == i) {
+                if ( deleteInd == k) {
                     it.remove();
+                    deleteInd = 0;
+                    i--;
                 }
             }
-            deleteInd = (deleteInd + k - 1) % list.size();
         }
         return System.currentTimeMillis() - start;
     }

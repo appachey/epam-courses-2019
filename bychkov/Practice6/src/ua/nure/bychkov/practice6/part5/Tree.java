@@ -36,7 +36,7 @@ public class Tree <E extends Comparable<E>> {
     }
 
     private int getSizeRec(Node<E> current) {
-        return current == null ? 0 : getSizeRec(current.leftBranch) + 1 + getSizeRec(current.rightBranch);
+        return current == null ? 0 : (getSizeRec(current.leftBranch) + 1 + getSizeRec(current.rightBranch));
     }
 
     public void add(E[] elements) {
@@ -49,28 +49,31 @@ public class Tree <E extends Comparable<E>> {
         return node.leftBranch == null ? node.element : findMinVal(node.leftBranch);
     }
 
+    private Node<E> isNodeNull(Node<E> node) {
+        if (node.leftBranch == null && node.rightBranch == null) {
+            return null;
+        }
+
+        if (node.rightBranch == null) {
+            return node.leftBranch;
+        }
+
+        if (node.leftBranch == null) {
+            return node.rightBranch;
+        }
+        E minVal = findMinVal(node.rightBranch);
+        node.element = minVal;
+        node.rightBranch = delRec(node.rightBranch, minVal);
+        return node;
+    }
+
     private Node<E> delRec(Node<E> current, E value) {
         if (current == null) {
             return null;
         }
 
         if (value.compareTo(current.element) == 0) {
-            if (current.leftBranch == null && current.rightBranch == null) {
-                return null;
-            }
-
-            if (current.rightBranch == null) {
-                return current.leftBranch;
-            }
-
-            if (current.leftBranch == null) {
-                return current.rightBranch;
-            }
-
-            E minVal = findMinVal(current.rightBranch);
-            current.element = minVal;
-            current.rightBranch = delRec(current.rightBranch, minVal);
-            return current;
+            return isNodeNull(current);
         }
         if (value.compareTo(current.element) < 0) {
             current.leftBranch = delRec(current.leftBranch, value);
@@ -85,10 +88,7 @@ public class Tree <E extends Comparable<E>> {
         int startSize = getSize();
         root = delRec(root, element);
         int currentSize = getSize();
-        if (startSize - 1 == currentSize) {
-            return true;
-        }
-        return false;
+        return startSize - 1 == currentSize;
     }
 
     private void print(Node<E> node, int offset) {
