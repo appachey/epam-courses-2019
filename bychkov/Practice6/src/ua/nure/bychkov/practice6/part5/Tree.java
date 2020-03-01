@@ -31,126 +31,65 @@ public class Tree <E extends Comparable<E>> {
        }
     }
 
+    public int getSize() {
+        return getSizeRec(root);
+    }
+
+    private int getSizeRec(Node<E> current) {
+        return current == null ? 0 : getSizeRec(current.leftBranch) + 1 + getSizeRec(current.rightBranch);
+    }
+
     public void add(E[] elements) {
         for (E element : elements) {
             add(element);
         }
     }
 
-    private Node<E> findMinNode (Node<E> delNode) {
-        Node<E> minNode = null;
-        Node<E> minNodeParent = null;
-        Node<E> currentNode = delNode.rightBranch;
-        while (currentNode != null) {
-            minNodeParent = minNode;
-            minNode = currentNode;
-            currentNode = currentNode.leftBranch;
-        }
-
-        if (minNode != delNode.rightBranch) {
-            minNodeParent.leftBranch = minNode.rightBranch;
-            minNode.rightBranch = delNode.rightBranch;
-        }
-        return minNode;
+    private E findMinVal(Node<E> node) {
+        return node.leftBranch == null ? node.element : findMinVal(node.leftBranch);
     }
 
-    private boolean delete(E e, Node<E> root) {
-        if (root == null) {
-            return false;
+    private Node<E> delRec(Node<E> current, E value) {
+        if (current == null) {
+            return null;
         }
-        if (e == root.element) {
-            if (root.rightBranch == null && root.leftBranch == null) {
-                root = null;
-            } else if (root.rightBranch == null) {
-                root = root.leftBranch;
-            } else if (root.leftBranch == null) {
-                root = root.rightBranch;
-            } else
 
-                root.element = minValue(root.leftBranch);
-            return delete(root.element, root.leftBranch);
-            // Delete the inorder successor
+        if (value.compareTo(current.element) == 0) {
+            if (current.leftBranch == null && current.rightBranch == null) {
+                return null;
+            }
 
-        } else if (e.compareTo(root.element) < 0) {
-            return delete(e, root.leftBranch);
-        } else {
-            return delete(e, root.rightBranch);
+            if (current.rightBranch == null) {
+                return current.leftBranch;
+            }
+
+            if (current.leftBranch == null) {
+                return current.rightBranch;
+            }
+
+            E minVal = findMinVal(current.rightBranch);
+            current.element = minVal;
+            current.rightBranch = delRec(current.rightBranch, minVal);
+            return current;
         }
-        //return true;
-    }
-
-    private E minValue(Node<E> root) {
-        E minv = root.element;
-        while (root.rightBranch != null) {
-            minv = root.rightBranch.element;
-            root = root.rightBranch;
+        if (value.compareTo(current.element) < 0) {
+            current.leftBranch = delRec(current.leftBranch, value);
+            return current;
         }
-        return minv;
+
+        current.rightBranch = delRec(current.rightBranch, value);
+        return current;
     }
 
     public boolean remove(E element) {
-        return delete(element, root);
+        int startSize = getSize();
+        root = delRec(root, element);
+        int currentSize = getSize();
+        if (startSize - 1 == currentSize) {
+            return true;
+        }
+        return false;
     }
-
-//    public boolean remove(E element) {
-//        Node<E> current = root;
-//        Node<E> parent = root;
-//        boolean isLeftNode = false;
-//        while (current.element != element) {
-//            parent = current;
-//            if (element.compareTo(current.element) > 0) {
-//                isLeftNode = false;
-//                current = current.rightBranch;
-//            } else {
-//                isLeftNode = true;
-//                current = current.leftBranch;
-//            }
-//            if (current == null) {
-//                return false;
-//            }
-//        }
-//
-//        if (current.leftBranch == null && current.rightBranch == null) {
-//            if (current == root) {
-//                root = null;
-//            }
-//            if (isLeftNode) {
-//                parent.leftBranch = null;
-//            } else {
-//                parent.rightBranch = null;
-//            }
-//        } else if (current.rightBranch == null) {
-//            if (current == root) {
-//                root = current.leftBranch;
-//            }
-//            if (isLeftNode) {
-//                parent.leftBranch = current.leftBranch;
-//            } else {
-//                parent.rightBranch = current.leftBranch;
-//            }
-//        } else if (current.leftBranch == null) {
-//            if (current == root) {
-//                root = current.rightBranch;
-//            }
-//            if (isLeftNode) {
-//                parent.leftBranch = current.rightBranch;
-//            } else {
-//                parent.rightBranch = current.rightBranch;
-//            }
-//        } else {
-//            Node<E> minNode = findMinNode(current);
-//            if (current == root) {
-//                root = minNode;
-//            }
-//            if (isLeftNode) {
-//                parent.leftBranch = minNode;
-//            } else {
-//                parent.rightBranch = minNode;
-//            }
-//            minNode.leftBranch = current.leftBranch;
-//        }
-//        return true;
-//    }
 
     private void print(Node<E> node, int offset) {
         String template = "";
