@@ -31,6 +31,9 @@ public class Word implements Comparable<Word>{
         if (o == null) {
             return false;
         }
+        if (this.getClass() != o.getClass()) {
+            return false;
+        }
         Word word = (Word) o;
         return Objects.equals(content, word.content);
     }

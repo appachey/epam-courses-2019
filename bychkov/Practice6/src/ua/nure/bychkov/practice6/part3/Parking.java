@@ -1,7 +1,7 @@
 package ua.nure.bychkov.practice6.part3;
 
 public class Parking {
-    public boolean[] places;
+    private boolean[] places;
 
     public Parking(int placesCount) {
         places = new boolean[placesCount];

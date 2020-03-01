@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Part2 {
-    private static final int N = 7;
+    private static final int N = 10_000;
 
     public static void main(String[] args) {
         List<Integer> arrListRm = new ArrayList<>();
@@ -17,10 +17,10 @@ public class Part2 {
         fillList(linkListRm);
         fillList(arrListIt);
         fillList(linkListIt);
-        System.out.println("ArrayList#Index: " + removeByIndex(arrListRm, 3) + " ms");
-        System.out.println("LinkedList#Index: " + removeByIndex(linkListRm, 3) + " ms");
-        System.out.println("ArrayList#Iterator: " + removeByIterator(arrListIt, 3) + " ms");
-        System.out.println("LinkedList#Iterator: " + removeByIterator(linkListIt, 3) + " ms");
+        System.out.println("ArrayList#Index: " + removeByIndex(arrListRm, 33) + " ms");
+        System.out.println("LinkedList#Index: " + removeByIndex(linkListRm, 33) + " ms");
+        System.out.println("ArrayList#Iterator: " + removeByIterator(arrListIt, 33) + " ms");
+        System.out.println("LinkedList#Iterator: " + removeByIterator(linkListIt, 33) + " ms");
     }
 
     public static void fillList(List<Integer> list) {
@@ -33,32 +33,24 @@ public class Part2 {
         long start = System.currentTimeMillis();
         int deleteInd = 0;
         while (list.size() != 1) {
-            for (int i = 0; i < list.size() && list.size() != 1; i++) {
-                deleteInd++;
-                if (deleteInd == k) {
-                    list.remove(i);
-                    deleteInd = 0;
-                    i--;
-                }
-        }
+            deleteInd = (deleteInd + k - 1) % list.size();
+            list.remove(deleteInd);
         }
         return System.currentTimeMillis() - start;
     }
 
     public static long removeByIterator(List<Integer> list, int k) {
         long start = System.currentTimeMillis();
-        int deleteInd = 0;
+        int deleteInd = k - 1;
         while (list.size() != 1) {
             Iterator<Integer> it = list.iterator();
             for (int i = 0; i < list.size() && list.size() != 1; i++) {
-                deleteInd++;
                 it.next();
-                if ( deleteInd == k) {
+                if ( deleteInd == i) {
                     it.remove();
-                    deleteInd = 0;
-                    i--;
                 }
             }
+            deleteInd = (deleteInd + k - 1) % list.size();
         }
         return System.currentTimeMillis() - start;
     }

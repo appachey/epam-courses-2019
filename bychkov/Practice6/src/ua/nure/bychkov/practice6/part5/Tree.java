@@ -104,7 +104,7 @@ public class Tree <E extends Comparable<E>> {
         }
     }
 
-    private String addSpaces (int count) {
+    private static String addSpaces (int count) {
         StringBuilder output = new StringBuilder();
         for (int i = 0; i < count; i++) {
             output.append(" ");

@@ -22,7 +22,7 @@ public class WordContainer {
     }
 
     public List<Word> getWordsList() {
-        return words;
+        return words.subList(0, words.size());
     }
 
     public static void main(String[] args) {
@@ -47,5 +47,4 @@ public class WordContainer {
             System.out.println(w);
         }
     }
-
 }

@@ -5,6 +5,7 @@ import ua.nure.bychkov.practice6.ReadUtil;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -36,7 +37,7 @@ public class Part63 {
 
         for (String s : output) {
             StringBuilder sb = new StringBuilder(s);
-            System.out.println(sb.reverse().toString().toUpperCase());
+            System.out.println(sb.reverse().toString().toUpperCase(Locale.ENGLISH));
         }
     }
 }
