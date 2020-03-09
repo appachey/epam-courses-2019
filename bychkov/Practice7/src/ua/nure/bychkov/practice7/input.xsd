@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            targetNamespace="http://nure.ua/p7">
+        targetNamespace="http://nure.ua/bychkov/p7"
+        xmlns:tns="http://nure.ua/bychkov/p7">
     <xsd:element name="medicines">
-        <xsd:element name="medicine" type="MedicineElem" maxOccurs="unbounded"/>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="medicine" type="tns:MedicineElem" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
     </xsd:element>
-    
+
     <xsd:complexType name="MedicineElem">
         <xsd:sequence>
-            <xsd:element name="name" type="xsd:string" />
-            <xsd:element name="pharm" type="xsd:string" />
-            <xsd:element name="analog" type="xsd:string" maxOccurs="unbounded"/>
-            <xsd:element name="version" type="VersionElem" maxOccurs="10"/>
+            <xsd:element name="name" type="xsd:token" />
+            <xsd:element name="pharm" type="xsd:token" />
+            <xsd:element name="group" type="xsd:token"/>
+            <xsd:element name="analog" type="xsd:token" maxOccurs="unbounded"/>
+            <xsd:element name="version" type="tns:VersionElem" maxOccurs="3"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="VersionElem">
         <xsd:sequence>
-            <xsd:element name="type" type="xsd:string"/>
-            <xsd:element name="manufacturer" type="ManufacturerElem" maxOccurs="unbounded"/>
+            <xsd:element name="type" type="xsd:token"/>
+            <xsd:element name="manufacturer" type="tns:ManufacturerElem" maxOccurs="unbounded"/>
         </xsd:sequence>
     </xsd:complexType>
 
@@ -27,31 +33,28 @@
                 <xsd:complexType>
                     <xsd:sequence>
                         <xsd:element name="number" type="xsd:unsignedInt"/>
-                        <xsd:element name="expiredate" type="xsd:date"/>
-                        <xsd:element name="organization" type="xsd:string"/>
+                        <xsd:element name="expireday">
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:pattern value="([0]\d|[1][0-2])\.([0-2]\d|[3][0-1])\.([2][01]|[1][6-9])\d{2}"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="organization" type="xsd:token"/>
                     </xsd:sequence>
                 </xsd:complexType>
             </xsd:element>
             <xsd:element name="package">
                 <xsd:complexType>
                     <xsd:sequence>
-                        <xsd:element name="type" type="xsd:string"/>
-                        <xsd:element name="count" type="CountType" />
-                        <xsd:element name="price" type="PriceType" />
+                        <xsd:element name="type" type="xsd:token"/>
+                        <xsd:element name="count" type="tns:CountType" />
+                        <xsd:element name="price" type="tns:Price"/>
                     </xsd:sequence>
                 </xsd:complexType>
             </xsd:element>
+            <xsd:element name="dosage" type="tns:Dosage" />
         </xsd:sequence>
-    </xsd:complexType>
-
-    <xsd:complexType name="TTT">
-        <xsd:simpleContent>
-            <xsd:extension base="xsd:string">
-                <xsd:attribute name="price" type="xsd:string">
-                    <xs
-                </xsd:attribute>
-            </xsd:extension>
-        </xsd:simpleContent>
     </xsd:complexType>
 
     <xsd:simpleType name="CountType">
@@ -61,9 +64,41 @@
         </xsd:restriction>
     </xsd:simpleType>
 
-    <xsd:simpleType name="PriceType">
+    <xsd:complexType name="Price">
+        <xsd:simpleContent>
+            <xsd:extension base="tns:UnsingedDouble">
+                <xsd:attribute name="currency">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                            <xsd:enumeration value="UAH" />
+                            <xsd:enumeration value="USD"/>
+                            <xsd:enumeration value="EUR" />
+                        </xsd:restriction>
+                    </xsd:simpleType>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:simpleType name="UnsingedDouble">
         <xsd:restriction base="xsd:double">
-            <xsd:minInclusive value="0.01"/>
+            <xsd:minInclusive value="0" />
+            <xsd:pattern value="\d+\.\d{2,2}" />
         </xsd:restriction>
     </xsd:simpleType>
+
+    <xsd:complexType name="Dosage">
+        <xsd:simpleContent>
+            <xsd:extension base="xsd:string">
+                <xsd:attribute name="unit">
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:string">
+                            <xsd:enumeration value="mg" />
+                            <xsd:enumeration value="ml" />
+                        </xsd:restriction>
+                    </xsd:simpleType>
+                </xsd:attribute>
+            </xsd:extension>
+        </xsd:simpleContent>
+    </xsd:complexType>
 </xsd:schema>
