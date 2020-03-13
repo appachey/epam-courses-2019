@@ -9,10 +9,8 @@ import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
 import ua.nure.bychkov.practice7.consts.Constants;
 import ua.nure.bychkov.practice7.consts.Names;
-import ua.nure.bychkov.practice7.entity.Manufacturer;
-import ua.nure.bychkov.practice7.entity.Medicine;
-import ua.nure.bychkov.practice7.entity.Medicines;
-import ua.nure.bychkov.practice7.entity.Version;
+import ua.nure.bychkov.practice7.entity.*;
+import ua.nure.bychkov.practice7.entity.Package;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -108,13 +106,51 @@ public class DOMController {
     private static Manufacturer getManufacturer(Node manufNode) {
         Manufacturer manufacturer = new Manufacturer();
         Element manufElement = (Element) manufNode;
-        Node dosageNode = manufElement.getElementsByTagName(Names.DOSAGE).item(0);
+
         Node certNode = manufElement.getElementsByTagName(Names.CERTIFICATE).item(0);
+        Certificate certificate = getCertificate(certNode);
+        manufacturer.setCertificate(certificate);
+
         Node packNode = manufElement.getElementsByTagName(Names.PACKAGE).item(0);
+        Package pack = getPackage(packNode);
+        manufacturer.setPack(pack);
+
+        Node dosageNode = manufElement.getElementsByTagName(Names.DOSAGE).item(0);
         manufacturer.setDosage(Integer.parseInt(dosageNode.getTextContent()));
         String dosageUnit = manufElement.getAttribute(Names.UNIT);
         manufacturer.setDosgeUnit(dosageUnit);
+
         return manufacturer;
+    }
+
+    private static Package getPackage(Node packNode) {
+        Package pack = new Package();
+        Element packElement = (Element) packNode;
+
+        Node packTypeNode = packElement.getElementsByTagName(Names.TYPE).item(0);
+        pack.setType(packTypeNode.getTextContent());
+
+        Node packCountNode = packElement.getElementsByTagName(Names.COUNT).item(0);
+        pack.setCount(Integer.parseInt(packCountNode.getTextContent()));
+
+        Node packPriceNode = packElement.getElementsByTagName(Names.PRICE).item(0);
+        pack.setPrice(Double.parseDouble(packPriceNode.getTextContent()));
+        String priceCurrency = packElement.getAttribute(Names.CURRENCY);
+        pack.setCurrency(priceCurrency);
+
+        return pack;
+    }
+
+    private static Certificate getCertificate(Node certNode) {
+        Certificate certificate = new Certificate();
+        Element certElement = (Element) certNode;
+        Node certNumberNode = certElement.getElementsByTagName(Names.NUMBER).item(0);
+        certificate.setNumber(Integer.parseInt(certNumberNode.getTextContent()));
+        Node certExpDateNode = certElement.getElementsByTagName(Names.EXPIREDAY).item(0);
+        certificate.setExpDate(certExpDateNode.getTextContent());
+        Node certOrgNode = certElement.getElementsByTagName(Names.ORGANIZATION).item(0);
+        certificate.setOrganization(certOrgNode.getTextContent());
+        return certificate;
     }
 
     private static String getAnalog(Node analogNode) {
