@@ -15,7 +15,7 @@
             <manufacturer>
                 <certificate>
                     <number>12</number>
-                    <expireday>12.12.2020</expireday>
+                    <expireday>23.12.2020</expireday>
                     <organization>Someorg</organization>
                 </certificate>
                 <package>
