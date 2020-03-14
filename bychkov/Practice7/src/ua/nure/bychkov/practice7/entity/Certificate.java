@@ -31,10 +31,10 @@ public class Certificate {
 
     @Override
     public String toString() {
-        return "Certificate{" +
-                "number=" + number +
-                ", expDate='" + expDate + '\'' +
-                ", organization='" + organization + '\'' +
-                '}';
+        return "\t\tCertificate: [" +
+                "number: " + number +
+                ", expDate: " + expDate +
+                ", organization: " + organization +
+                ']';
     }
 }

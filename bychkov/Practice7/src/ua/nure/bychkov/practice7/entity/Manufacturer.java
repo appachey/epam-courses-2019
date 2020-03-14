@@ -40,10 +40,10 @@ public class Manufacturer {
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder();
+        StringBuilder result = new StringBuilder("\tManufacturer:").append("\n");
         result.append(certificate).append("\n")
                 .append(pack).append("\n")
-                .append(dosage).append(" " + dosgeUnit);
+                .append("\t\tDosage: " + dosage).append(" " + dosgeUnit);
         return result.toString();
     }
 }

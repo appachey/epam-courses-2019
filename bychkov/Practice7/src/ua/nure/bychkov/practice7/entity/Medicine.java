@@ -50,14 +50,14 @@ public class Medicine {
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder(name).append("\n")
-                                        .append(pharm).append("\n")
-                                        .append(group).append("\n");
+        StringBuilder result = new StringBuilder("Name: " + name).append("\n")
+                                        .append("Pharm: " + pharm).append("\n")
+                                        .append("Group: " + group).append("\n");
         for (String analog : analogs) {
-            result.append(analog).append("\n");
+            result.append("Analog: " + analog).append("\n");
         }
         for (Version version : versions) {
-            result.append(version).append("\n");
+            result.append(version);
         }
         return result.toString();
     }

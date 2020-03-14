@@ -40,11 +40,11 @@ public class Package {
 
     @Override
     public String toString() {
-        return "Package{" +
-                "type='" + type + '\'' +
-                ", count=" + count +
-                ", price=" + price + " "
-                 + currency + '\'' +
-                '}';
+        return "\t\tPackage: [" +
+                "type: " + type +
+                ", count: " + count +
+                ", price: " + price + " "
+                 + currency +
+                ']';
     }
 }

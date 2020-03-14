@@ -24,7 +24,8 @@ public class Version {
 
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder(type).append("\n");
+        StringBuilder result = new StringBuilder("Version:").append("\n");
+        result.append("\tType: " + type).append("\n");
         for (Manufacturer manufacturer : manufacturers) {
             result.append(manufacturer).append("\n");
         }

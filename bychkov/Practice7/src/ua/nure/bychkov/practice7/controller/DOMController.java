@@ -15,8 +15,19 @@ import ua.nure.bychkov.practice7.entity.Package;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
 
+/**
+ *
+ */
 public class DOMController {
     private String xmlFileName;
 
@@ -117,7 +128,8 @@ public class DOMController {
 
         Node dosageNode = manufElement.getElementsByTagName(Names.DOSAGE).item(0);
         manufacturer.setDosage(Integer.parseInt(dosageNode.getTextContent()));
-        String dosageUnit = manufElement.getAttribute(Names.UNIT);
+        Element dosageElement = (Element) dosageNode;
+        String dosageUnit = dosageElement.getAttribute(Names.UNIT);
         manufacturer.setDosgeUnit(dosageUnit);
 
         return manufacturer;
@@ -135,7 +147,8 @@ public class DOMController {
 
         Node packPriceNode = packElement.getElementsByTagName(Names.PRICE).item(0);
         pack.setPrice(Double.parseDouble(packPriceNode.getTextContent()));
-        String priceCurrency = packElement.getAttribute(Names.CURRENCY);
+        Element packPriceElement = (Element) packPriceNode;
+        String priceCurrency = packPriceElement.getAttribute(Names.CURRENCY);
         pack.setCurrency(priceCurrency);
 
         return pack;
@@ -156,5 +169,129 @@ public class DOMController {
     private static String getAnalog(Node analogNode) {
         Element aElement = (Element) analogNode;
         return aElement.getTextContent();
+    }
+
+    public static Document getDocument(Medicines medicines) throws ParserConfigurationException {
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+                dbf.setNamespaceAware(true);
+
+        DocumentBuilder db = dbf.newDocumentBuilder();
+        Document document = db.newDocument();
+
+        Element mElement = document.createElement(Names.MEDICINES);
+
+        document.appendChild(mElement);
+
+        for (Medicine medicine : medicines.getMedicines()) {
+            Element medElement = document.createElement(Names.MEDICINE);
+            mElement.appendChild(medElement);
+
+            Element nameElement = document.createElement(Names.NAME);
+            nameElement.setTextContent(medicine.getName());
+            medElement.appendChild(nameElement);
+
+            Element pharmElement = document.createElement(Names.PHARM);
+            pharmElement.setTextContent(medicine.getPharm());
+            medElement.appendChild(pharmElement);
+
+            Element groupElement = document.createElement(Names.GROUP);
+            groupElement.setTextContent(medicine.getGroup());
+            medElement.appendChild(groupElement);
+
+            for (String analog : medicine.getAnalogs()) {
+                Element analogElement = document.createElement(Names.ANALOG);
+                analogElement.setTextContent(analog);
+                medElement.appendChild(analogElement);
+            }
+
+            for (Version version : medicine.getVersions()) {
+                Element verElement = document.createElement(Names.VERSION);
+                medElement.appendChild(verElement);
+
+                Element verTypeElement = document.createElement(Names.TYPE);
+                verTypeElement.setTextContent(version.getType());
+                verElement.appendChild(verTypeElement);
+
+                for (Manufacturer manufacturer : version.getManufacturers()) {
+                    Element manufElement = document.createElement(Names.MANUFACTURER);
+                    verElement.appendChild(manufElement);
+
+                    Certificate certificate = manufacturer.getCertificate();
+                    Element certElement = document.createElement(Names.CERTIFICATE);
+                    manufElement.appendChild(certElement);
+
+                    Element certNumberElement = document.createElement(Names.NUMBER);
+                    certNumberElement.setTextContent(String.valueOf(certificate.getNumber()));
+                    certElement.appendChild(certNumberElement);
+
+                    Element certExpDateElement = document.createElement(Names.EXPIREDAY);
+                    certExpDateElement.setTextContent(certificate.getExpDate());
+                    certElement.appendChild(certExpDateElement);
+
+                    Element certOrgElement = document.createElement(Names.ORGANIZATION);
+                    certOrgElement.setTextContent(certificate.getOrganization());
+                    certElement.appendChild(certOrgElement);
+
+                    Package pack = manufacturer.getPack();
+                    Element packElement = document.createElement(Names.PACKAGE);
+                    manufElement.appendChild(packElement);
+
+                    Element packTypeElement = document.createElement(Names.TYPE);
+                    packTypeElement.setTextContent(pack.getType());
+                    packElement.appendChild(packTypeElement);
+
+                    Element packCountElement = document.createElement(Names.COUNT);
+                    packCountElement.setTextContent(String.valueOf(pack.getCount()));
+                    packElement.appendChild(packCountElement);
+
+                    Element packPriceElement = document.createElement(Names.PRICE);
+                    packPriceElement.setTextContent(String.valueOf(pack.getPrice()));
+                    packPriceElement.setAttribute(Names.CURRENCY, pack.getCurrency());
+                    packElement.appendChild(packPriceElement);
+
+                    Element dosageElement = document.createElement(Names.DOSAGE);
+                    dosageElement.setTextContent(String.valueOf(manufacturer.getDosage()));
+                    dosageElement.setAttribute(Names.UNIT, manufacturer.getDosgeUnit());
+                    manufElement.appendChild(dosageElement);
+                }
+            }
+        }
+        return document;
+    }
+
+    public static void saveToXML(Medicines medicines, String xmlFileName) throws ParserConfigurationException, TransformerException {
+        saveToXML(getDocument(medicines), xmlFileName);
+    }
+
+    public static void saveToXML(Document document, String xmlFileName) throws TransformerException {
+        StreamResult result = new  StreamResult(new File(xmlFileName));
+
+        TransformerFactory tf = TransformerFactory.newInstance();
+        Transformer t = tf.newTransformer();
+        t.setOutputProperty(OutputKeys.INDENT, "yes");
+
+        t.transform(new DOMSource(document), result);
+    }
+
+    public static void main(String[] args) throws Exception {
+        DOMController domContr = new DOMController(Constants.INVALID_XML_FILE);
+
+        try {
+            domContr.parse(true);
+        } catch (SAXException ex) {
+            System.err.println("====================================");
+            System.err.println("XML not valid");
+            System.err.println("Medicines object --> " + domContr.getMedicines());
+            System.err.println("====================================");
+        }
+
+        domContr.parse(false);
+
+        System.out.println("====================================");
+        System.out.print("Here is the medicines: \n" + domContr.getMedicines());
+        System.out.println("====================================");
+
+        Medicines medicines = domContr.getMedicines();
+        DOMController.saveToXML(medicines, Constants.INVALID_XML_FILE + ".dom-result.xml");
     }
 }

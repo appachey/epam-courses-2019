@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<p7:medicines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:p7="http://nure.ua/bychkov/p7/entity"
+            xsi:schemaLocation="http://nure.ua/bychkov/p7/entity input.xsd">
+
+    <medicine>
+        <name>Analgin</name>
+        <pharm>BadMedicine</pharm>
+        <group>Analgetics</group>
+        <analog>FirstAnalog</analog>
+        <analog>SecondAnalog</analog>
+        <version>
+            <type>pills</type>
+            <manufacturer>
+                <certificate>
+                    <number>12</number>
+                    <expireday>23.12.2020</expireday>
+                    <organization>Someorg</organization>
+                </certificate>
+                <package>
+                    <type>box</type>
+                    <count>10</count>
+                    <price currency="UAH">0.00</price>
+                </package>
+                <dosage unit="mg">2</dosage>
+            </manufacturer>
+        </version>
+        <version>
+            <type>powder</type>
+            <manufacturer>
+                <certificate>
+                    <number>12</number>
+                    <expireday>12.13.2020</expireday>
+                    <organization>Someorg</organization>
+                </certificate>
+                <package>
+                    <type>box</type>
+                    <count>10</count>
+                    <price currency="UAH">0.00</price>
+                </package>
+                <dosage unit="mg">2</dosage>
+            </manufacturer>
+            <manufacturer>
+                <certificate>
+                    <number>12</number>
+                    <expireday>12.12.2020</expireday>
+                    <organization>Someorg</organization>
+                </certificate>
+                <package>
+                    <type>box</type>
+                    <count>10</count>
+                    <price currency="UAH">12.99</price>
+                </package>
+                <dosage unit="mg">2</dosage>
+            </manufacturer>
+        </version>
+    </medicine>
+
+    <medicine>
+        <name>Nazivin</name>
+        <pharm>FarmaSuite</pharm>
+        <group>Nazal</group>
+        <analog>FirstAnalog</analog>
+        <analog>SecondAnalog</analog>
+        <version>
+            <type>spray</type>
+            <manufacturer>
+                <certificate>
+                    <number>2</number>
+                    <expireday>12.12.2023</expireday>
+                    <organization>Someorg</organization>
+                </certificate>
+                <package>
+                    <type>bottle</type>
+                    <count>1</count>
+                    <price currency="UAH">2.49</price>
+                </package>
+                <dosage unit="ml">15</dosage>
+            </manufacturer>
+            <manufacturer>
+                <certificate>
+                    <number>2</number>
+                    <expireday>12.12.2023</expireday>
+                    <organization>Someorg</organization>
+                </certificate>
+                <package>
+                    <type>bottle</type>
+                    <count>1</count>
+                    <price currency="UAH">2.49</price>
+                </package>
+                <dosage unit="ml">15</dosage>
+            </manufacturer>
+        </version>
+    </medicine>
+
+    <medicine>
+        <name>Farmacetron</name>
+        <pharm>FarmaSuite</pharm>
+        <group>Analgetics</group>
+        <analog>FirstAnalog</analog>
+        <version>
+           <type>powder</type>
+           <manufacturer>
+               <certificate>
+                   <number>2</number>
+                   <expireday>01.01.2021</expireday>
+                   <organization>Someorg</organization>
+               </certificate>
+               <package>
+                   <type>bag</type>
+                   <count>1</count>
+                   <price currency="UAH">0.49</price>
+               </package>
+               <dosage unit="mg">200</dosage>
+           </manufacturer>
+        </version>
+
+        <version>
+            <type>pills</type>
+            <manufacturer>
+                <certificate>
+                    <number>5</number>
+                    <expireday>07.11.2018</expireday>
+                    <organization>Someorg</organization>
+                </certificate>
+                <package>
+                    <type>box</type>
+                    <count>15</count>
+                    <price currency="UAH">13.49</price>
+                </package>
+                <dosage unit="mg">3</dosage>
+            </manufacturer>
+        </version>
+    </medicine>
+
+</p7:medicines>
