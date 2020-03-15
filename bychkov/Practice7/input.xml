@@ -11,7 +11,7 @@
         <analog>FirstAnalog</analog>
         <analog>SecondAnalog</analog>
         <version>
-            <vertype>pills</vertype>
+            <vertype>powder</vertype>
             <manufacturer>
                 <certificate>
                     <number>12</number>
@@ -21,13 +21,13 @@
                 <package>
                     <packtype>box</packtype>
                     <count>10</count>
-                    <price currency="UAH">0.00</price>
+                    <price currency="UAH">0.25</price>
                 </package>
                 <dosage unit="mg">2</dosage>
             </manufacturer>
         </version>
         <version>
-            <vertype>powder</vertype>
+            <vertype>pills</vertype>
             <manufacturer>
                 <certificate>
                     <number>12</number>
@@ -37,7 +37,7 @@
                 <package>
                     <packtype>box</packtype>
                     <count>10</count>
-                    <price currency="UAH">0.00</price>
+                    <price currency="UAH">120.10</price>
                 </package>
                 <dosage unit="mg">2</dosage>
             </manufacturer>
@@ -87,7 +87,7 @@
                 <package>
                     <packtype>bottle</packtype>
                     <count>1</count>
-                    <price currency="UAH">2.49</price>
+                    <price currency="UAH">2.51</price>
                 </package>
                 <dosage unit="ml">15</dosage>
             </manufacturer>
@@ -100,7 +100,7 @@
         <group>Analgetics</group>
         <analog>FirstAnalog</analog>
         <version>
-           <vertype>powder</vertype>
+           <vertype>spray</vertype>
            <manufacturer>
                <certificate>
                    <number>2</number>

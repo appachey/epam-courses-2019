@@ -12,6 +12,7 @@ import ua.nure.bychkov.practice7.entity.Version;
 import ua.nure.bychkov.practice7.entity.Manufacturer;
 import ua.nure.bychkov.practice7.entity.Certificate;
 import ua.nure.bychkov.practice7.entity.Package;
+import ua.nure.bychkov.practice7.util.Sorter;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -193,30 +194,30 @@ public class SAXController extends DefaultHandler {
 
         Medicines medicines = saxContr.getMedicines();
 
-        System.out.println("====================================");
-        System.out.print("Here is the medicines: \n" + medicines);
-        System.out.println("====================================");
-
+//        System.out.println("====================================");
+//        System.out.print("Here is the medicines: \n" + medicines);
+//        System.out.println("====================================");
+        Sorter.sortManufacturersByPackagePrice(medicines);
         String xmlFileName = "output.sax.xml";
         DOMController.saveToXML(medicines, xmlFileName);
 
-        saxContr = new SAXController(Constants.INVALID_XML_FILE);
-
-        try {
-            saxContr.parse(true);
-        } catch (Exception e) {
-            System.err.println("====================================");
-            System.err.println("Validation is failed:\n" + e.getMessage());
-            System.err
-                    .println("Try to print medicines object:" + saxContr.getMedicines());
-            System.err.println("====================================");
-        }
-
-        saxContr.parse(false);
-
-        System.out.println("====================================");
-        System.out.print("Here is the medicines: \n" + saxContr.getMedicines());
-        System.out.println("====================================");
+//        saxContr = new SAXController(Constants.INVALID_XML_FILE);
+//
+//        try {
+//            saxContr.parse(true);
+//        } catch (Exception e) {
+//            System.err.println("====================================");
+//            System.err.println("Validation is failed:\n" + e.getMessage());
+//            System.err
+//                    .println("Try to print medicines object:" + saxContr.getMedicines());
+//            System.err.println("====================================");
+//        }
+//
+//        saxContr.parse(false);
+//
+//        System.out.println("====================================");
+//        System.out.print("Here is the medicines: \n" + saxContr.getMedicines());
+//        System.out.println("====================================");
 
     }
 }
