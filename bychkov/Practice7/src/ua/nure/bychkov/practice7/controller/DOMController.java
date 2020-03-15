@@ -104,7 +104,7 @@ public class DOMController {
     private static Version getVersion(Node vNode) {
         Version version = new Version();
         Element vElement = (Element) vNode;
-        Node typeNode = vElement.getElementsByTagName(Names.TYPE).item(0);
+        Node typeNode = vElement.getElementsByTagName(Names.VER_TYPE).item(0);
         version.setType(typeNode.getTextContent());
         NodeList manufacturersList = vElement.getElementsByTagName(Names.MANUFACTURER);
         for (int i = 0; i < manufacturersList.getLength(); i++) {
@@ -139,7 +139,7 @@ public class DOMController {
         Package pack = new Package();
         Element packElement = (Element) packNode;
 
-        Node packTypeNode = packElement.getElementsByTagName(Names.TYPE).item(0);
+        Node packTypeNode = packElement.getElementsByTagName(Names.PACK_TYPE).item(0);
         pack.setType(packTypeNode.getTextContent());
 
         Node packCountNode = packElement.getElementsByTagName(Names.COUNT).item(0);
@@ -208,7 +208,7 @@ public class DOMController {
                 Element verElement = document.createElement(Names.VERSION);
                 medElement.appendChild(verElement);
 
-                Element verTypeElement = document.createElement(Names.TYPE);
+                Element verTypeElement = document.createElement(Names.VER_TYPE);
                 verTypeElement.setTextContent(version.getType());
                 verElement.appendChild(verTypeElement);
 
@@ -236,7 +236,7 @@ public class DOMController {
                     Element packElement = document.createElement(Names.PACKAGE);
                     manufElement.appendChild(packElement);
 
-                    Element packTypeElement = document.createElement(Names.TYPE);
+                    Element packTypeElement = document.createElement(Names.PACK_TYPE);
                     packTypeElement.setTextContent(pack.getType());
                     packElement.appendChild(packTypeElement);
 

@@ -10,7 +10,8 @@ public final class Names {
     public static final String GROUP = "group";
     public static final String ANALOG = "analog";
     public static final String VERSION = "version";
-    public static final String TYPE = "type";
+    public static final String VER_TYPE = "vertype";
+    public static final String PACK_TYPE = "packtype";
     public static final String MANUFACTURER = "manufacturer";
     public static final String CERTIFICATE = "certificate";
     public static final String NUMBER = "number";

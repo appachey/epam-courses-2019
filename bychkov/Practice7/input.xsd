@@ -22,7 +22,7 @@
 
     <xsd:complexType name="VersionElem">
         <xsd:sequence>
-            <xsd:element name="type" type="xsd:token"/>
+            <xsd:element name="vertype" type="xsd:token"/>
             <xsd:element name="manufacturer" type="tns:ManufacturerElem" maxOccurs="unbounded"/>
         </xsd:sequence>
     </xsd:complexType>
@@ -47,7 +47,7 @@
             <xsd:element name="package">
                 <xsd:complexType>
                     <xsd:sequence>
-                        <xsd:element name="type" type="xsd:token"/>
+                        <xsd:element name="packtype" type="xsd:token"/>
                         <xsd:element name="count" type="tns:CountType" />
                         <xsd:element name="price" type="tns:Price"/>
                     </xsd:sequence>

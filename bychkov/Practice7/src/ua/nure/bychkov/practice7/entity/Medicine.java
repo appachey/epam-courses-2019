@@ -41,6 +41,15 @@ public class Medicine {
         return analogs;
     }
 
+    public void setAnalog(String analog) {
+        if (analogs == null) {
+            analogs = new ArrayList<>();
+            analogs.add(analog);
+        } else {
+            analogs.add(analog);
+        }
+    }
+
     public List<Version> getVersions() {
         if (versions == null) {
             return versions = new ArrayList<>();
