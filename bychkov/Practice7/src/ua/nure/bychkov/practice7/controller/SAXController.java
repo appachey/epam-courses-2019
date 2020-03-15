@@ -197,6 +197,26 @@ public class SAXController extends DefaultHandler {
         System.out.print("Here is the medicines: \n" + medicines);
         System.out.println("====================================");
 
+        String xmlFileName = "output.sax.xml";
+        DOMController.saveToXML(medicines, xmlFileName);
+
+        saxContr = new SAXController(Constants.INVALID_XML_FILE);
+
+        try {
+            saxContr.parse(true);
+        } catch (Exception e) {
+            System.err.println("====================================");
+            System.err.println("Validation is failed:\n" + e.getMessage());
+            System.err
+                    .println("Try to print medicines object:" + saxContr.getMedicines());
+            System.err.println("====================================");
+        }
+
+        saxContr.parse(false);
+
+        System.out.println("====================================");
+        System.out.print("Here is the medicines: \n" + saxContr.getMedicines());
+        System.out.println("====================================");
 
     }
 }
