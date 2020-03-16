@@ -7,9 +7,14 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
+
 import ua.nure.bychkov.practice7.consts.Constants;
 import ua.nure.bychkov.practice7.consts.Names;
-import ua.nure.bychkov.practice7.entity.*;
+import ua.nure.bychkov.practice7.entity.Certificate;
+import ua.nure.bychkov.practice7.entity.Medicines;
+import ua.nure.bychkov.practice7.entity.Medicine;
+import ua.nure.bychkov.practice7.entity.Version;
+import ua.nure.bychkov.practice7.entity.Manufacturer;
 import ua.nure.bychkov.practice7.entity.Package;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -21,9 +26,9 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
 import java.io.File;
 import java.io.IOException;
-import java.util.Collections;
 
 /**
  * Controller for DOM parser.
