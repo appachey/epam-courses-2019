@@ -29,6 +29,7 @@ import javax.xml.transform.stream.StreamResult;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
 
 /**
  * Controller for DOM parser.
@@ -183,7 +184,7 @@ public class DOMController {
         pack.setCount(Integer.parseInt(packCountNode.getTextContent()));
 
         Node packPriceNode = packElement.getElementsByTagName(Names.PRICE).item(0);
-        pack.setPrice(Double.parseDouble(packPriceNode.getTextContent()));
+        pack.setPrice(packPriceNode.getTextContent());
         Element packPriceElement = (Element) packPriceNode;
         String priceCurrency = packPriceElement.getAttribute(Names.CURRENCY);
         pack.setCurrency(priceCurrency);
@@ -298,7 +299,7 @@ public class DOMController {
                     packElement.appendChild(packCountElement);
 
                     Element packPriceElement = document.createElement(Names.PRICE);
-                    packPriceElement.setTextContent(String.valueOf(pack.getPrice()));
+                    packPriceElement.setTextContent(String.format(Locale.ENGLISH,"%.2f", pack.getPrice()));
                     packPriceElement.setAttribute(Names.CURRENCY, pack.getCurrency());
                     packElement.appendChild(packPriceElement);
 
@@ -319,7 +320,8 @@ public class DOMController {
      * @throws ParserConfigurationException
      * @throws TransformerException
      */
-    public static void saveToXML(Medicines medicines, String xmlFileName) throws ParserConfigurationException, TransformerException {
+    public static void saveToXML(Medicines medicines, String xmlFileName) throws
+                        ParserConfigurationException, TransformerException {
         saveToXML(getDocument(medicines), xmlFileName);
     }
 

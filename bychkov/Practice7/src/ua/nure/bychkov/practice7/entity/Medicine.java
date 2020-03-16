@@ -41,7 +41,8 @@ public class Medicine {
 
     public List<String> getAnalogs() {
         if (analogs == null) {
-            return analogs = new ArrayList<>();
+            analogs = new ArrayList<>();
+            return analogs;
         }
         return analogs;
     }
@@ -57,7 +58,8 @@ public class Medicine {
 
     public List<Version> getVersions() {
         if (versions == null) {
-            return versions = new ArrayList<>();
+            versions = new ArrayList<>();
+            return versions;
         }
         return versions;
     }

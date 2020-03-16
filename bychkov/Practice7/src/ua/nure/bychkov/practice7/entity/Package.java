@@ -8,7 +8,7 @@ package ua.nure.bychkov.practice7.entity;
 public class Package {
     private String type;
     private int count;
-    private double price;
+    private String price;
     private String currency;
 
     public String getType() {
@@ -28,10 +28,10 @@ public class Package {
     }
 
     public double getPrice() {
-        return price;
+        return Double.parseDouble(price);
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

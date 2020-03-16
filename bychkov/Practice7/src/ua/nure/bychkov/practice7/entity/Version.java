@@ -22,7 +22,8 @@ public class Version {
 
     public List<Manufacturer> getManufacturers() {
         if (manufacturers == null) {
-            return manufacturers = new ArrayList<>();
+            manufacturers = new ArrayList<>();
+            return manufacturers;
         }
         return manufacturers;
     }

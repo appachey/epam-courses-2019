@@ -6,6 +6,8 @@ import ua.nure.bychkov.practice7.controller.STAXController;
 import ua.nure.bychkov.practice7.entity.Medicines;
 import ua.nure.bychkov.practice7.util.Sorter;
 
+import java.util.Locale;
+
 /**
  * Entry point to XML parsers application (practice 7).
  *
@@ -17,11 +19,11 @@ public class Main {
     }
 
     public static void main(String[] args) throws Exception {
+        Locale.setDefault(Locale.ENGLISH);
         if (args.length != 1) {
             usage();
             return;
         }
-
         String xmlFileName = args[0];
         System.out.println("Input ==> " + xmlFileName);
 

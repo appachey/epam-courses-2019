@@ -9,22 +9,23 @@ import java.util.List;
  * @author Bychkov Sergey.
  */
 public class Medicines {
-    private List<Medicine> medicines;
+    private List<Medicine> medicinesList;
 
     public List<Medicine> getMedicines() {
-        if (medicines == null) {
-            return medicines = new ArrayList<>();
+        if (medicinesList == null) {
+            medicinesList = new ArrayList<>();
+            return medicinesList;
         }
-        return medicines;
+        return medicinesList;
     }
 
     @Override
     public String toString() {
-        if (medicines == null || medicines.isEmpty()) {
+        if (medicinesList == null || medicinesList.isEmpty()) {
             return "No medicines found!";
         }
         StringBuilder result = new StringBuilder();
-        for (Medicine medicine : medicines) {
+        for (Medicine medicine : medicinesList) {
             result.append(medicine).append("\n");
         }
         return result.toString();

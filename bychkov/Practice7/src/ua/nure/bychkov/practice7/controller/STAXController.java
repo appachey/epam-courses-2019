@@ -164,7 +164,7 @@ public class STAXController extends DefaultHandler {
                     continue;
                 }
                 if (Names.PRICE.equals(currentElement)) {
-                    pack.setPrice(Double.parseDouble(characters.getData()));
+                    pack.setPrice(characters.getData());
                 }
             }
 

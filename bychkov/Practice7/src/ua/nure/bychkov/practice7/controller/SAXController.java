@@ -114,10 +114,8 @@ public class SAXController extends DefaultHandler {
             pack = new Package();
             return;
         }
-        if (Names.PRICE.equals(currentElement)) {
-            if (attributes.getLength() > 0) {
-                pack.setCurrency(attributes.getValue(uri, Names.CURRENCY));
-            }
+        if (Names.PRICE.equals(currentElement) && attributes.getLength() > 0) {
+            pack.setCurrency(attributes.getValue(uri, Names.CURRENCY));
         }
     }
 
@@ -197,7 +195,7 @@ public class SAXController extends DefaultHandler {
             return;
         }
         if (Names.PRICE.equals(currentElement)) {
-            pack.setPrice(Double.parseDouble(elementText));
+            pack.setPrice(elementText);
         }
     }
 
