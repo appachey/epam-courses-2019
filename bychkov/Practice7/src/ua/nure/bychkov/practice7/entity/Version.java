@@ -3,6 +3,11 @@ package ua.nure.bychkov.practice7.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implements the Version entity.
+ *
+ * @author Bychkov Sergey.
+ */
 public class Version {
     private String type;
     private List<Manufacturer> manufacturers;

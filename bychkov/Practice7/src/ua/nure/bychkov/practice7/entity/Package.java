@@ -1,5 +1,10 @@
 package ua.nure.bychkov.practice7.entity;
 
+/**
+ * Implements the Package entity.
+ *
+ * @author Bychkov Sergey.
+ */
 public class Package {
     private String type;
     private int count;
@@ -44,7 +49,7 @@ public class Package {
                 "type: " + type +
                 ", count: " + count +
                 ", price: " + price + " "
-                 + currency +
+                + currency +
                 ']';
     }
 }

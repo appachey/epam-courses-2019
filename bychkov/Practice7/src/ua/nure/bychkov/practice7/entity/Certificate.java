@@ -1,5 +1,10 @@
 package ua.nure.bychkov.practice7.entity;
 
+/**
+ * Implements the Certificate entity.
+ *
+ * @author Bychkov Sergey.
+ */
 public class Certificate {
     private int number;
     private String expDate;

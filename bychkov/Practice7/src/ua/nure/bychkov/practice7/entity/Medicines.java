@@ -3,6 +3,11 @@ package ua.nure.bychkov.practice7.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Root container. Implements the Medicines entity.
+ *
+ * @author Bychkov Sergey.
+ */
 public class Medicines {
     private List<Medicine> medicines;
 

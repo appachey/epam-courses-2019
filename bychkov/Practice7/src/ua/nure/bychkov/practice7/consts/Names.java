@@ -1,7 +1,13 @@
 package ua.nure.bychkov.practice7.consts;
 
+/**
+ * Holds entities declared in XSD document.
+ *
+ * @author Bychkov Sergey.
+ */
 public final class Names {
-    private Names() {}
+    private Names() {
+    }
 
     public static final String MEDICINES = "medicines";
     public static final String MEDICINE = "medicine";

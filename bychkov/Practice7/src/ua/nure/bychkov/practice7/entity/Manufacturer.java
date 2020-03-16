@@ -1,5 +1,10 @@
 package ua.nure.bychkov.practice7.entity;
 
+/**
+ * Implements the Manufacturer entity.
+ *
+ * @author Bychkov Sergey.
+ */
 public class Manufacturer {
     private int dosage;
     private String dosgeUnit;

@@ -3,6 +3,11 @@ package ua.nure.bychkov.practice7.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implements the Medicine entity.
+ *
+ * @author Bychkov Sergey.
+ */
 public class Medicine {
     private String name;
     private String pharm;
@@ -60,8 +65,8 @@ public class Medicine {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder("Name: " + name).append("\n")
-                                        .append("Pharm: " + pharm).append("\n")
-                                        .append("Group: " + group).append("\n");
+                .append("Pharm: " + pharm).append("\n")
+                .append("Group: " + group).append("\n");
         for (String analog : analogs) {
             result.append("Analog: " + analog).append("\n");
         }
