@@ -4,6 +4,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
+
 import ua.nure.bychkov.practice7.consts.Constants;
 import ua.nure.bychkov.practice7.consts.Names;
 import ua.nure.bychkov.practice7.entity.Medicines;
@@ -17,13 +18,22 @@ import ua.nure.bychkov.practice7.util.Sorter;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+
 import java.io.IOException;
 
+/**
+ * Controller for SAX parser.
+ *
+ * @author Bychkov Sergey.
+ */
 public class SAXController extends DefaultHandler {
+
     private String xmlFileName;
 
+    //current element name holder
     private String currentElement;
 
+    // main container
     private Medicines medicines;
 
     private Medicine medicine;
@@ -36,10 +46,22 @@ public class SAXController extends DefaultHandler {
 
     private Package pack;
 
-    public  SAXController(String xmlFileName) {
+    public SAXController(String xmlFileName) {
         this.xmlFileName = xmlFileName;
     }
 
+    /**
+     * Parses XML document.
+     * @param validate If true validate XML
+     *                 document against its
+     *                 schema. With this
+     *                 parameter it is
+     *                 possible make parser
+     *                 validating.
+     * @throws ParserConfigurationException
+     * @throws SAXException
+     * @throws IOException
+     */
     public void parse(boolean validate) throws ParserConfigurationException, SAXException, IOException {
         SAXParserFactory factory = SAXParserFactory.newInstance();
 
