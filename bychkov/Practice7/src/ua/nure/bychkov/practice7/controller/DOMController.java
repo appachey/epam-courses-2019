@@ -7,9 +7,14 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
+
 import ua.nure.bychkov.practice7.consts.Constants;
 import ua.nure.bychkov.practice7.consts.Names;
-import ua.nure.bychkov.practice7.entity.*;
+import ua.nure.bychkov.practice7.entity.Certificate;
+import ua.nure.bychkov.practice7.entity.Medicines;
+import ua.nure.bychkov.practice7.entity.Medicine;
+import ua.nure.bychkov.practice7.entity.Version;
+import ua.nure.bychkov.practice7.entity.Manufacturer;
 import ua.nure.bychkov.practice7.entity.Package;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -21,16 +26,21 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
 import java.io.File;
 import java.io.IOException;
-import java.util.Collections;
+import java.util.Locale;
 
 /**
+ * Controller for DOM parser.
  *
+ * @author Bychkov Sergey
  */
 public class DOMController {
+
     private String xmlFileName;
 
+     //main container
     private Medicines medicines;
 
     public DOMController(String xmlFileName) {
@@ -41,8 +51,16 @@ public class DOMController {
         return medicines;
     }
 
+    /**
+     * Parses XML document.
+     * @param validate
+     * If true validate XML document against its schema.
+     * @throws ParserConfigurationException
+     * @throws SAXException
+     * @throws IOException
+     */
     public void parse(boolean validate)
-        throws ParserConfigurationException, SAXException, IOException {
+            throws ParserConfigurationException, SAXException, IOException {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
         dbf.setNamespaceAware(true);
@@ -75,6 +93,11 @@ public class DOMController {
         }
     }
 
+    /**
+     * Extracts medicine object from the medicine XML node.
+     * @param mNode Medicine node.
+     * @return Medicine object.
+     */
     private static Medicine getMedicine(Node mNode) {
         Medicine medicine = new Medicine();
         Element mElement = (Element) mNode;
@@ -101,6 +124,11 @@ public class DOMController {
         return medicine;
     }
 
+    /**
+     * Extracts version object from version XML node.
+     * @param vNode Version node.
+     * @return Version object.
+     */
     private static Version getVersion(Node vNode) {
         Version version = new Version();
         Element vElement = (Element) vNode;
@@ -114,6 +142,11 @@ public class DOMController {
         return version;
     }
 
+    /**
+     * Extracts manufacturer object from manufacturer XML node.
+     * @param manufNode manufacturer node.
+     * @return Manufacturer object.
+     */
     private static Manufacturer getManufacturer(Node manufNode) {
         Manufacturer manufacturer = new Manufacturer();
         Element manufElement = (Element) manufNode;
@@ -135,6 +168,11 @@ public class DOMController {
         return manufacturer;
     }
 
+    /**
+     * Extracts package object from package XML node.
+     * @param packNode package node.
+     * @return Package object.
+     */
     private static Package getPackage(Node packNode) {
         Package pack = new Package();
         Element packElement = (Element) packNode;
@@ -146,7 +184,7 @@ public class DOMController {
         pack.setCount(Integer.parseInt(packCountNode.getTextContent()));
 
         Node packPriceNode = packElement.getElementsByTagName(Names.PRICE).item(0);
-        pack.setPrice(Double.parseDouble(packPriceNode.getTextContent()));
+        pack.setPrice(packPriceNode.getTextContent());
         Element packPriceElement = (Element) packPriceNode;
         String priceCurrency = packPriceElement.getAttribute(Names.CURRENCY);
         pack.setCurrency(priceCurrency);
@@ -154,6 +192,11 @@ public class DOMController {
         return pack;
     }
 
+    /**
+     * Extracts certificate object from certificate XML node.
+     * @param certNode certificate node.
+     * @return Cerificate object.
+     */
     private static Certificate getCertificate(Node certNode) {
         Certificate certificate = new Certificate();
         Element certElement = (Element) certNode;
@@ -166,14 +209,25 @@ public class DOMController {
         return certificate;
     }
 
+    /**
+     * Extracts analog content from analog node.
+     * @param analogNode analog node.
+     * @return String.
+     */
     private static String getAnalog(Node analogNode) {
         Element aElement = (Element) analogNode;
         return aElement.getTextContent();
     }
 
+    /**
+     * Creates and returns DOM of the Medicines container.
+     * @param medicines
+     * @return Document object.
+     * @throws ParserConfigurationException
+     */
     public static Document getDocument(Medicines medicines) throws ParserConfigurationException {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-                dbf.setNamespaceAware(true);
+        dbf.setNamespaceAware(true);
 
         DocumentBuilder db = dbf.newDocumentBuilder();
         Document document = db.newDocument();
@@ -245,7 +299,7 @@ public class DOMController {
                     packElement.appendChild(packCountElement);
 
                     Element packPriceElement = document.createElement(Names.PRICE);
-                    packPriceElement.setTextContent(String.valueOf(pack.getPrice()));
+                    packPriceElement.setTextContent(String.format(Locale.ENGLISH,"%.2f", pack.getPrice()));
                     packPriceElement.setAttribute(Names.CURRENCY, pack.getCurrency());
                     packElement.appendChild(packPriceElement);
 
@@ -259,12 +313,26 @@ public class DOMController {
         return document;
     }
 
-    public static void saveToXML(Medicines medicines, String xmlFileName) throws ParserConfigurationException, TransformerException {
+    /**
+     * Saves Medicines object to XML file.
+     * @param medicines Medicines object to be saved.
+     * @param xmlFileName Output XML file name.
+     * @throws ParserConfigurationException
+     * @throws TransformerException
+     */
+    public static void saveToXML(Medicines medicines, String xmlFileName) throws
+                        ParserConfigurationException, TransformerException {
         saveToXML(getDocument(medicines), xmlFileName);
     }
 
+    /**
+     * Save DOM to XML.
+     * @param document DOM to be saved.
+     * @param xmlFileName Output XML file name.
+     * @throws TransformerException
+     */
     public static void saveToXML(Document document, String xmlFileName) throws TransformerException {
-        StreamResult result = new  StreamResult(new File(xmlFileName));
+        StreamResult result = new StreamResult(new File(xmlFileName));
 
         TransformerFactory tf = TransformerFactory.newInstance();
         Transformer t = tf.newTransformer();

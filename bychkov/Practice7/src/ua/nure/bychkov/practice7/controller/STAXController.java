@@ -1,21 +1,38 @@
 package ua.nure.bychkov.practice7.controller;
 
 import org.xml.sax.helpers.DefaultHandler;
+
 import ua.nure.bychkov.practice7.consts.Constants;
 import ua.nure.bychkov.practice7.consts.Names;
-import ua.nure.bychkov.practice7.entity.*;
+import ua.nure.bychkov.practice7.entity.Manufacturer;
+import ua.nure.bychkov.practice7.entity.Version;
+import ua.nure.bychkov.practice7.entity.Medicine;
+import ua.nure.bychkov.practice7.entity.Medicines;
+import ua.nure.bychkov.practice7.entity.Certificate;
 import ua.nure.bychkov.practice7.entity.Package;
 
 import javax.xml.namespace.QName;
+
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.events.*;
+import javax.xml.stream.events.XMLEvent;
+import javax.xml.stream.events.StartElement;
+import javax.xml.stream.events.Attribute;
+import javax.xml.stream.events.Characters;
+import javax.xml.stream.events.EndElement;
+
 import javax.xml.transform.stream.StreamSource;
 
+/**
+ * Controller for StAX parser.
+ *
+ * @author Bychkov Sergey.
+ */
 public class STAXController extends DefaultHandler {
     private String xmlFileName;
 
+    //main container
     private Medicines medicines;
 
     public Medicines getMedicines() {
@@ -26,6 +43,11 @@ public class STAXController extends DefaultHandler {
         this.xmlFileName = xmlFileName;
     }
 
+    /**
+     * Parses XML document with StAX (based on event reader).
+     * There is no validation during the parsing.
+     * @throws XMLStreamException
+     */
     public void parse() throws XMLStreamException {
         Medicine medicine = null;
 
@@ -142,7 +164,7 @@ public class STAXController extends DefaultHandler {
                     continue;
                 }
                 if (Names.PRICE.equals(currentElement)) {
-                    pack.setPrice(Double.parseDouble(characters.getData()));
+                    pack.setPrice(characters.getData());
                 }
             }
 

@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-        targetNamespace="http://nure.ua/bychkov/p7"
-        xmlns:tns="http://nure.ua/bychkov/p7">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
     <xsd:element name="medicines">
         <xsd:complexType>
             <xsd:sequence>
-                <xsd:element name="medicine" type="tns:MedicineElem" minOccurs="0" maxOccurs="unbounded"/>
+                <xsd:element name="medicine" type="MedicineElem" minOccurs="0" maxOccurs="unbounded"/>
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>
@@ -18,14 +16,14 @@
             <xsd:element name="pharm" type="xsd:token" />
             <xsd:element name="group" type="xsd:token"/>
             <xsd:element name="analog" type="xsd:token" maxOccurs="unbounded"/>
-            <xsd:element name="version" type="tns:VersionElem" maxOccurs="3"/>
+            <xsd:element name="version" type="VersionElem" maxOccurs="3"/>
         </xsd:sequence>
     </xsd:complexType>
 
     <xsd:complexType name="VersionElem">
         <xsd:sequence>
             <xsd:element name="vertype" type="xsd:token"/>
-            <xsd:element name="manufacturer" type="tns:ManufacturerElem" maxOccurs="unbounded"/>
+            <xsd:element name="manufacturer" type="ManufacturerElem" maxOccurs="unbounded"/>
         </xsd:sequence>
     </xsd:complexType>
 
@@ -50,12 +48,12 @@
                 <xsd:complexType>
                     <xsd:sequence>
                         <xsd:element name="packtype" type="xsd:token"/>
-                        <xsd:element name="count" type="tns:CountType" />
-                        <xsd:element name="price" type="tns:Price"/>
+                        <xsd:element name="count" type="CountType" />
+                        <xsd:element name="price" type="Price"/>
                     </xsd:sequence>
                 </xsd:complexType>
             </xsd:element>
-            <xsd:element name="dosage" type="tns:Dosage" />
+            <xsd:element name="dosage" type="Dosage" />
         </xsd:sequence>
     </xsd:complexType>
 
@@ -68,7 +66,7 @@
 
     <xsd:complexType name="Price">
         <xsd:simpleContent>
-            <xsd:extension base="tns:UnsingedDouble">
+            <xsd:extension base="UnsingedDouble">
                 <xsd:attribute name="currency">
                     <xsd:simpleType>
                         <xsd:restriction base="xsd:string">

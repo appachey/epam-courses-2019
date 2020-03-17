@@ -4,6 +4,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
+
 import ua.nure.bychkov.practice7.consts.Constants;
 import ua.nure.bychkov.practice7.consts.Names;
 import ua.nure.bychkov.practice7.entity.Medicines;
@@ -17,13 +18,22 @@ import ua.nure.bychkov.practice7.util.Sorter;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+
 import java.io.IOException;
 
+/**
+ * Controller for SAX parser.
+ *
+ * @author Bychkov Sergey.
+ */
 public class SAXController extends DefaultHandler {
+
     private String xmlFileName;
 
+    //current element name holder
     private String currentElement;
 
+    // main container
     private Medicines medicines;
 
     private Medicine medicine;
@@ -36,10 +46,22 @@ public class SAXController extends DefaultHandler {
 
     private Package pack;
 
-    public  SAXController(String xmlFileName) {
+    public SAXController(String xmlFileName) {
         this.xmlFileName = xmlFileName;
     }
 
+    /**
+     * Parses XML document.
+     * @param validate If true validate XML
+     *                 document against its
+     *                 schema. With this
+     *                 parameter it is
+     *                 possible make parser
+     *                 validating.
+     * @throws ParserConfigurationException
+     * @throws SAXException
+     * @throws IOException
+     */
     public void parse(boolean validate) throws ParserConfigurationException, SAXException, IOException {
         SAXParserFactory factory = SAXParserFactory.newInstance();
 
@@ -92,11 +114,8 @@ public class SAXController extends DefaultHandler {
             pack = new Package();
             return;
         }
-        if (Names.PRICE.equals(currentElement)) {
-            if (attributes.getLength() > 0) {
-                pack.setCurrency(attributes.getValue(uri, Names.CURRENCY));
-            }
-            return;
+        if (Names.PRICE.equals(currentElement) && attributes.getLength() > 0) {
+            pack.setCurrency(attributes.getValue(uri, Names.CURRENCY));
         }
     }
 
@@ -120,7 +139,6 @@ public class SAXController extends DefaultHandler {
         }
         if (Names.PACKAGE.equals(localName)) {
             manufacturer.setPack(pack);
-            return;
         }
     }
 
@@ -177,8 +195,7 @@ public class SAXController extends DefaultHandler {
             return;
         }
         if (Names.PRICE.equals(currentElement)) {
-            pack.setPrice(Double.parseDouble(elementText));
-            return;
+            pack.setPrice(elementText);
         }
     }
 
@@ -194,30 +211,30 @@ public class SAXController extends DefaultHandler {
 
         Medicines medicines = saxContr.getMedicines();
 
-//        System.out.println("====================================");
-//        System.out.print("Here is the medicines: \n" + medicines);
-//        System.out.println("====================================");
+        System.out.println("====================================");
+        System.out.print("Here is the medicines: \n" + medicines);
+        System.out.println("====================================");
         Sorter.sortManufacturersByPackagePrice(medicines);
         String xmlFileName = "output.sax.xml";
         DOMController.saveToXML(medicines, xmlFileName);
 
-//        saxContr = new SAXController(Constants.INVALID_XML_FILE);
-//
-//        try {
-//            saxContr.parse(true);
-//        } catch (Exception e) {
-//            System.err.println("====================================");
-//            System.err.println("Validation is failed:\n" + e.getMessage());
-//            System.err
-//                    .println("Try to print medicines object:" + saxContr.getMedicines());
-//            System.err.println("====================================");
-//        }
-//
-//        saxContr.parse(false);
-//
-//        System.out.println("====================================");
-//        System.out.print("Here is the medicines: \n" + saxContr.getMedicines());
-//        System.out.println("====================================");
+        saxContr = new SAXController(Constants.INVALID_XML_FILE);
+
+        try {
+            saxContr.parse(true);
+        } catch (Exception e) {
+            System.err.println("====================================");
+            System.err.println("Validation is failed:\n" + e.getMessage());
+            System.err
+                    .println("Try to print medicines object:" + saxContr.getMedicines());
+            System.err.println("====================================");
+        }
+
+        saxContr.parse(false);
+
+        System.out.println("====================================");
+        System.out.print("Here is the medicines: \n" + saxContr.getMedicines());
+        System.out.println("====================================");
 
     }
 }
