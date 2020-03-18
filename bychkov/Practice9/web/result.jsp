@@ -12,6 +12,6 @@
 </head>
 <body>
     <p>Result: ${requestScope.res}</p>
-    <a href="index.jsp">Get back to Canculator!</a>
+    <a href="calc2.jsp">Get back to Canculator!</a>
 </body>
 </html>

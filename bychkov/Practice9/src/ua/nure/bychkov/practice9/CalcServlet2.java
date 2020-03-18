@@ -7,9 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/calc")
-public class CalcServlet extends HttpServlet {
-
+@WebServlet("/calc2")
+public class CalcServlet2 extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String op = request.getParameter("op");
         int firstArg = Integer.parseInt(request.getParameter("x"));
@@ -25,6 +24,7 @@ public class CalcServlet extends HttpServlet {
             default:
                 break;
         }
-        response.getWriter().println("Result: " + res);
+        request.setAttribute("res", res);
+        request.getRequestDispatcher("result.jsp").forward(request, response);
     }
 }

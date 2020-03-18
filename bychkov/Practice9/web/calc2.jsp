@@ -11,13 +11,13 @@
     <title>Canculator</title>
   </head>
   <body>
-    <form action="calc">
-      <input type="number" name="firstArg">
+    <form action="calc2">
+      <input type="number" name="x">
       <select name="op">
         <option value="plus">+</option>
         <option value="minus">-</option>
       </select>
-      <input type="number" name="secondArg">
+      <input type="number" name="y">
       <input type="submit" value="Calculate">
     </form>
   </body>
