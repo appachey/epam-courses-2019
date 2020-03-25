@@ -1,9 +1,12 @@
 package ua.nure.bychkov.practice8.db;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
 
 public class DBUtils {
 
@@ -35,5 +38,18 @@ public class DBUtils {
                 ex.printStackTrace();
             }
         }
+    }
+
+    public static String connectURL(String propFileName) {
+        String url = null;
+        try {
+            FileInputStream fis = new FileInputStream(propFileName);
+            Properties prop = new Properties();
+            prop.load(fis);
+            url = prop.getProperty("connection.url");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return url;
     }
 }

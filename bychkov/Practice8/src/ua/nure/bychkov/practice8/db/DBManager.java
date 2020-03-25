@@ -38,7 +38,7 @@ public class DBManager {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         try {
-            con = DriverManager.getConnection(getDBCon(PROPERTIES));
+            con = DriverManager.getConnection(DBUtils.connectURL(PROPERTIES));
             pstmt = con.prepareStatement(FIND_USER_BY_LOGIN);
             pstmt.setString(1, login);
             rs = pstmt.executeQuery();
@@ -61,7 +61,7 @@ public class DBManager {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         try {
-            con = DriverManager.getConnection(getDBCon(PROPERTIES));
+            con = DriverManager.getConnection(DBUtils.connectURL(PROPERTIES));
             pstmt = con.prepareStatement(INSERT_USER, Statement.RETURN_GENERATED_KEYS);
             int i = 1;
             pstmt.setString(i++, user.getLogin());
@@ -89,7 +89,7 @@ public class DBManager {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         try {
-            con = DriverManager.getConnection(getDBCon(PROPERTIES));
+            con = DriverManager.getConnection(DBUtils.connectURL(PROPERTIES));
             pstmt = con.prepareStatement(FIND_TEAM_BY_NAME);
             pstmt.setString(1, teamName);
             rs = pstmt.executeQuery();
@@ -112,7 +112,7 @@ public class DBManager {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         try {
-            con = DriverManager.getConnection(getDBCon(PROPERTIES));
+            con = DriverManager.getConnection(DBUtils.connectURL(PROPERTIES));
             pstmt = con.prepareStatement(INSERT_TEAM, Statement.RETURN_GENERATED_KEYS);
             int i = 1;
             pstmt.setString(i++, team.getName());
@@ -141,7 +141,7 @@ public class DBManager {
         ResultSet rs = null;
 
         try{
-            con = DriverManager.getConnection(getDBCon(PROPERTIES));
+            con = DriverManager.getConnection(DBUtils.connectURL(PROPERTIES));
             stmt = con.createStatement();
             rs = stmt.executeQuery(FIND_ALL_USERS);
             while (rs.next()) {
@@ -165,7 +165,7 @@ public class DBManager {
         ResultSet rs = null;
 
         try{
-            con = DriverManager.getConnection(getDBCon(PROPERTIES));
+            con = DriverManager.getConnection(DBUtils.connectURL(PROPERTIES));
             stmt = con.createStatement();
             rs = stmt.executeQuery(FIND_ALL_TEAMS);
             while (rs.next()) {
@@ -180,19 +180,6 @@ public class DBManager {
         }
 
         return teams;
-    }
-
-    private static String getDBCon(String propFileName) {
-        String url = null;
-        try {
-            FileInputStream fis = new FileInputStream(propFileName);
-            Properties prop = new Properties();
-            prop.load(fis);
-            url = prop.getProperty("connection.url");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        return url;
     }
 
     private User extracrUser(ResultSet rs) throws SQLException {
