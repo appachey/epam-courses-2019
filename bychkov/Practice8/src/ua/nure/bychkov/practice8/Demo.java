@@ -22,13 +22,14 @@ public class Demo {
         dbManager.insertUser(User.createUser("petrov"));
         dbManager.insertUser(User.createUser("obama"));
         printList(dbManager.findAllUsers());
+        System.out.println(dbManager.getUser("obama"));
         // users  ==> [ivanov, petrov, obama]
         System.out.println("===========================");
 
         // Part 2
         dbManager.insertTeam(Team.createTeam("teamB"));
         dbManager.insertTeam(Team.createTeam("teamC"));
-
+        System.out.println(dbManager.getTeam("teamC"));
         printList(dbManager.findAllTeams());
         // teams ==> [teamA, teamB, teamC]
 

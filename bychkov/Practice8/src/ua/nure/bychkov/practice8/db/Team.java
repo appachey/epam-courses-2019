@@ -1,5 +1,7 @@
 package ua.nure.bychkov.practice8.db;
 
+import java.util.Objects;
+
 public class Team {
     private int id;
     private String name;
@@ -32,7 +34,7 @@ public class Team {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Team team = (Team) o;
-        return name.equals(team.name);
+        return Objects.equals(name, team.name);
     }
 
 }
