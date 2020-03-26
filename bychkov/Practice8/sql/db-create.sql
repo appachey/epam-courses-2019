@@ -16,8 +16,8 @@ CREATE TABLE users_teams (
         user_id INT NOT NULL,
         team_id INT NOT NULL,
         PRIMARY KEY (user_id, team_id),
-        FOREIGN KEY (user_id) REFERENCES users (id),
-        FOREIGN KEY (team_id) REFERENCES teams (id)
+        FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+        FOREIGN KEY (team_id) REFERENCES teams (id) ON DELETE CASCADE
 );
 
 INSERT INTO users (login) VALUES ('ivanov');

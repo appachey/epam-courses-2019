@@ -32,6 +32,13 @@ public class Demo {
         System.out.println(dbManager.getTeam("teamC"));
         printList(dbManager.findAllTeams());
         // teams ==> [teamA, teamB, teamC]
+        User obama = dbManager.getUser("obama");
+        Team teamA = dbManager.getTeam("teamA");
+        Team teamB = dbManager.getTeam("teamB");
+        Team teamC = dbManager.getTeam("teamC");
+        Team teamX = Team.createTeam("teamX");
+        teamX.setId(100);
+        dbManager.setTeamsForUser(obama, teamA, teamB, teamX);
 
     }
 }

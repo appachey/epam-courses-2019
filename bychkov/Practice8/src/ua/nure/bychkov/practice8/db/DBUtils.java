@@ -40,6 +40,16 @@ public class DBUtils {
         }
     }
 
+    public static void rollback(Connection con) {
+        if (con != null) {
+            try {
+                con.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
     public static String connectURL(String propFileName) {
         String url = null;
         try {
