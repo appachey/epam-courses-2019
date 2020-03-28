@@ -191,7 +191,7 @@ public class DBManager {
         try {
             con = getConnection();
             for (Team team : teams) {
-                setTeamForUser(user, team);
+                setTeamForUser(user, team, con);
             }
             con.commit();
         } catch (SQLException ex) {
@@ -203,14 +203,11 @@ public class DBManager {
         }
     }
 
-    private boolean setTeamForUser(User user, Team team) throws MyException {
-        Connection con = null;
+    private boolean setTeamForUser(User user, Team team, Connection con) throws MyException {
         PreparedStatement pstmt = null;
-        int userID = getUserID(user);
-        int teamID = getTeamID(team);
         try {
-            con = getConnection();
-            con.setAutoCommit(true);
+            int userID = getUserID(user);
+            int teamID = getTeamID(team);
             pstmt = con.prepareStatement(SET_TEAM_FOR_USER);
             int k = 1;
             pstmt.setInt(k++, userID);
@@ -221,7 +218,6 @@ public class DBManager {
                     user.getLogin() + "!", ex);
         }finally {
             DBUtils.close(pstmt);
-            DBUtils.close(con);
         }
     }
 
