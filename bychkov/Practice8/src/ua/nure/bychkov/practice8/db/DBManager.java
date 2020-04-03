@@ -161,21 +161,24 @@ public class DBManager {
         return result;
     }
 
-    public boolean deleteTeam(String teamName) throws MyException {
+    public boolean deleteTeam(Team team) throws MyException {
         Connection con = null;
         PreparedStatement pstmt = null;
         try {
             con = getConnection();
+            con.setAutoCommit(true);
             pstmt = con.prepareStatement(DELETE_TEAM);
-            pstmt.setString(1, teamName);
+            pstmt.setString(1, team.getName());
             return pstmt.executeUpdate() > 0;
         } catch(SQLException ex) {
-            throw new MyException("Team with name " + teamName + "not found!", ex);
+            throw new MyException("Team with name " + team.getName() + "not found!", ex);
         } finally {
             DBUtils.close(pstmt);
             DBUtils.close(con);
         }
     }
+
+
 
     public List<Team> getUserTeams(User user) throws MyException {
         List<Team> teams = new ArrayList<>();
