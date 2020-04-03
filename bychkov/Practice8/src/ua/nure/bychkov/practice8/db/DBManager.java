@@ -18,11 +18,14 @@ public class DBManager {
     private static final String PROPERTIES = "app.properties";
     private static final String FIND_ALL_USERS = "SELECT * FROM users";
     private static final String FIND_ALL_TEAMS = "SELECT * FROM teams";
+    private static final String FIND_ALL_USER_TEAMS = "SELECT team_id FROM users_teams WHERE user_id = ?";
     private static final String INSERT_USER = "INSERT INTO users VALUES(DEFAULT, ?)";
     private static final String INSERT_TEAM = "INSERT INTO teams VALUES(DEFAULT, ?)";
     private static final String FIND_USER_BY_LOGIN = "SELECT * FROM users WHERE login = ?";
     private static final String FIND_TEAM_BY_NAME = "SELECT * FROM teams WHERE name = ?";
     private static final String SET_TEAM_FOR_USER = "INSERT INTO users_teams VALUES(?, ?)";
+    private static final String FIND_TEAM_BY_ID = "SELECT * FROM teams WHERE id = ?";
+    private static final String DELETE_TEAM = "DELETE FROM teams WHERE name = ?";
 
 
     private DBManager () {}
@@ -100,11 +103,31 @@ public class DBManager {
                 team = extracrTeam(rs);
             }
         }catch (SQLException ex) {
-            throw new MyException("User with login: " + teamName + " doesn`t exist", ex);
+            throw new MyException("Team with name: " + teamName + " doesn`t exist", ex);
         }finally {
             DBUtils.close(rs);
             DBUtils.close(pstmt);
             DBUtils.close(con);
+        }
+        return team;
+    }
+
+    private Team getTeam(Connection con, int teamID) throws MyException {
+        Team team = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try {
+            pstmt = con.prepareStatement(FIND_TEAM_BY_ID);
+            pstmt.setInt(1, teamID);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                team = extracrTeam(rs);
+            }
+        }catch (SQLException ex) {
+            throw new MyException("Team with id: " + teamID + " doesn`t exist", ex);
+        }finally {
+            DBUtils.close(rs);
+            DBUtils.close(pstmt);
         }
         return team;
     }
@@ -136,6 +159,46 @@ public class DBManager {
             DBUtils.close(con);
         }
         return result;
+    }
+
+    public boolean deleteTeam(String teamName) throws MyException {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(DELETE_TEAM);
+            pstmt.setString(1, teamName);
+            return pstmt.executeUpdate() > 0;
+        } catch(SQLException ex) {
+            throw new MyException("Team with name " + teamName + "not found!", ex);
+        } finally {
+            DBUtils.close(pstmt);
+            DBUtils.close(con);
+        }
+    }
+
+    public List<Team> getUserTeams(User user) throws MyException {
+        List<Team> teams = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try {
+            con = getConnection();
+            int userID = getUserID(user);
+            pstmt = con.prepareStatement(FIND_ALL_USER_TEAMS);
+            pstmt.setInt(1, userID);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                teams.add(getTeam(con, rs.getInt("team_id")));
+            }
+        } catch(SQLException ex) {
+            throw new MyException("No teams found for user " + user.getLogin(), ex);
+        } finally {
+            DBUtils.close(rs);
+            DBUtils.close(pstmt);
+            DBUtils.close(con);
+        }
+        return teams;
     }
 
     public List<User> findAllUsers() throws MyException{

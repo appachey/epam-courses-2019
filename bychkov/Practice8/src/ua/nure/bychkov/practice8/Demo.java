@@ -36,9 +36,18 @@ public class Demo {
         Team teamA = dbManager.getTeam("teamA");
         Team teamB = dbManager.getTeam("teamB");
         Team teamC = dbManager.getTeam("teamC");
-        Team teamX = Team.createTeam("teamX");
-        teamX.setId(100);
-        dbManager.setTeamsForUser(obama, teamA, teamB, teamX);
 
+        dbManager.setTeamsForUser(obama, teamA, teamB, teamC);
+
+        for (User user : dbManager.findAllUsers()) {
+            printList(dbManager.getUserTeams(user));
+            System.out.println("~~~~~");
+        }
+        dbManager.deleteTeam("teamB");
+        System.out.println("after delete");
+        for (User user : dbManager.findAllUsers()) {
+            printList(dbManager.getUserTeams(user));
+            System.out.println("~~~~~");
+        }
     }
 }
