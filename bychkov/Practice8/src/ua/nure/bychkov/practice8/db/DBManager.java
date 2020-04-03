@@ -1,7 +1,8 @@
 package ua.nure.bychkov.practice8.db;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import ua.nure.bychkov.practice8.db.entity.Team;
+import ua.nure.bychkov.practice8.db.entity.User;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,7 +12,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Properties;
 
 public class DBManager {
     private static DBManager instance;
@@ -26,6 +26,7 @@ public class DBManager {
     private static final String SET_TEAM_FOR_USER = "INSERT INTO users_teams VALUES(?, ?)";
     private static final String FIND_TEAM_BY_ID = "SELECT * FROM teams WHERE id = ?";
     private static final String DELETE_TEAM = "DELETE FROM teams WHERE name = ?";
+    private static final String UPDATE_TEAM = "UPDATE teams SET name = ? WHERE id = ?";
 
 
     private DBManager () {}
@@ -178,7 +179,24 @@ public class DBManager {
         }
     }
 
-
+    public boolean updateTeam(Team team) throws MyException {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        try {
+            con = getConnection();
+            con.setAutoCommit(true);
+            pstmt = con.prepareStatement(UPDATE_TEAM);
+            int k = 1;
+            pstmt.setString(k++, team.getName());
+            pstmt.setInt(k++, team.getId());
+            return pstmt.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            throw new MyException("Team update failed!", ex);
+        } finally {
+            DBUtils.close(pstmt);
+            DBUtils.close(con);
+        }
+    }
 
     public List<Team> getUserTeams(User user) throws MyException {
         List<Team> teams = new ArrayList<>();
@@ -187,9 +205,8 @@ public class DBManager {
         ResultSet rs = null;
         try {
             con = getConnection();
-            int userID = getUserID(user);
             pstmt = con.prepareStatement(FIND_ALL_USER_TEAMS);
-            pstmt.setInt(1, userID);
+            pstmt.setInt(1, user.getId());
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 teams.add(getTeam(con, rs.getInt("team_id")));
@@ -215,7 +232,7 @@ public class DBManager {
             stmt = con.createStatement();
             rs = stmt.executeQuery(FIND_ALL_USERS);
             while (rs.next()) {
-                users.add(User.createUser(rs.getString("login")));
+                users.add(getUser(rs.getString("login")));
             }
         } catch (SQLException ex) {
             throw new MyException("No users found", ex);
@@ -239,7 +256,7 @@ public class DBManager {
             stmt = con.createStatement();
             rs = stmt.executeQuery(FIND_ALL_TEAMS);
             while (rs.next()) {
-                teams.add(Team.createTeam(rs.getString("Name")));
+                teams.add(getTeam(rs.getString("Name")));
             }
         } catch (SQLException ex) {
             throw new MyException("No teams found", ex);
@@ -272,12 +289,10 @@ public class DBManager {
     private boolean setTeamForUser(User user, Team team, Connection con) throws MyException {
         PreparedStatement pstmt = null;
         try {
-            int userID = getUserID(user);
-            int teamID = getTeamID(team);
             pstmt = con.prepareStatement(SET_TEAM_FOR_USER);
             int k = 1;
-            pstmt.setInt(k++, userID);
-            pstmt.setInt(k++, teamID);
+            pstmt.setInt(k++, user.getId());
+            pstmt.setInt(k++, team.getId());
             return pstmt.executeUpdate() > 0;
         } catch(SQLException ex) {
             throw new MyException("Can`t set team " + team.getName() + " for user " +
@@ -299,52 +314,6 @@ public class DBManager {
         team.setId(rs.getInt("id"));
         team.setName(rs.getString("name"));
         return team;
-    }
-
-    private int getUserID(User user) throws MyException{
-        int userID = 0;
-        Connection con = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-        try {
-            con = getConnection();
-            pstmt = con.prepareStatement(FIND_USER_BY_LOGIN);
-            pstmt.setString(1, user.getLogin());
-            rs = pstmt.executeQuery();
-            if (rs.next()) {
-                userID = rs.getInt("id");
-            }
-        }catch (SQLException ex) {
-            throw new MyException("User with login: " + user.getLogin() + " doesn`t exist", ex);
-        }finally {
-            DBUtils.close(rs);
-            DBUtils.close(pstmt);
-            DBUtils.close(con);
-        }
-        return userID;
-    }
-
-    private int getTeamID(Team team) throws MyException{
-        int teamID = 0;
-        Connection con = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-        try {
-            con = getConnection();
-            pstmt = con.prepareStatement(FIND_TEAM_BY_NAME);
-            pstmt.setString(1, team.getName());
-            rs = pstmt.executeQuery();
-            if (rs.next()) {
-                teamID = rs.getInt("id");
-            }
-        }catch (SQLException ex) {
-            throw new MyException("Team with name: " + team.getName() + " doesn`t exist", ex);
-        }finally {
-            DBUtils.close(rs);
-            DBUtils.close(pstmt);
-            DBUtils.close(con);
-        }
-        return teamID;
     }
 
     private static Connection getConnection() throws SQLException {

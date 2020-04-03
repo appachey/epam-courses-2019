@@ -21,4 +21,4 @@ CREATE TABLE users_teams (
 );
 
 INSERT INTO users (login) VALUES ('ivanov');
-INSERT INTO teams (name) VALUES ('teamA');
+INSERT INTO teams (name) VALUES ('teamZ');

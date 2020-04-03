@@ -1,4 +1,4 @@
-package ua.nure.bychkov.practice8.db;
+package ua.nure.bychkov.practice8.db.entity;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -6,6 +6,10 @@ import java.util.Objects;
 public class User implements Serializable {
     private  int id;
     private String login;
+
+    public int getId() {
+        return id;
+    }
 
     public void setId(int id) {
         this.id = id;
