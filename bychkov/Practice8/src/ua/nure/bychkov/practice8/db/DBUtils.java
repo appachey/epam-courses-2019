@@ -6,9 +6,14 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.DriverManager;
 import java.util.Properties;
 
 public class DBUtils {
+
+    private static final String PROPERTIES = "app.properties";
+
+    private DBUtils() {}
 
     public static void close(Connection con) {
         if (con != null) {
@@ -50,7 +55,7 @@ public class DBUtils {
         }
     }
 
-    public static String connectURL(String propFileName) {
+    private static String connectURL(String propFileName) {
         String url = null;
         try {
             FileInputStream fis = new FileInputStream(propFileName);
@@ -61,5 +66,12 @@ public class DBUtils {
             ex.printStackTrace();
         }
         return url;
+    }
+
+    public static Connection getConnection() throws SQLException {
+        Connection con = DriverManager.getConnection(DBUtils.connectURL(PROPERTIES));
+        con.setAutoCommit(false);
+        con.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+        return con;
     }
 }

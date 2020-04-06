@@ -13,7 +13,7 @@ public class Demo {
         System.out.println(list);
     }
 
-    public static void main(String[] args) throws MyException {
+    public static void main(String[] args) throws MyException{
         // users  ==> [ivanov]
         // teams ==> [teamA]
 
@@ -28,8 +28,8 @@ public class Demo {
         System.out.println("===========================");
 
         // Part 2
-        dbManager.insertTeam(Team.createTeam("teamX"));
-        dbManager.insertTeam(Team.createTeam("teamY"));
+        dbManager.insertTeam(Team.createTeam("teamB"));
+        dbManager.insertTeam(Team.createTeam("teamC"));
 
         printList(dbManager.findAllTeams());
         // teams ==> [teamA, teamB, teamC]
@@ -41,9 +41,9 @@ public class Demo {
         User userIvanov = dbManager.getUser("ivanov");
         User userObama = dbManager.getUser("obama");
 
-        Team teamA = dbManager.getTeam("teamZ");
-        Team teamB = dbManager.getTeam("teamX");
-        Team teamC = dbManager.getTeam("teamY");
+        Team teamA = dbManager.getTeam("teamA");
+        Team teamB = dbManager.getTeam("teamB");
+        Team teamC = dbManager.getTeam("teamC");
 
         // method setTeamsForUser must implement transaction!
         dbManager.setTeamsForUser(userIvanov, teamA);
@@ -66,7 +66,7 @@ public class Demo {
         dbManager.deleteTeam(teamA);
 
         // Part 5
-        teamC.setName("teamA");
+        teamC.setName("teamX");
         dbManager.updateTeam(teamC);
         printList(dbManager.findAllTeams());
         // teams ==> [teamB, teamX]
